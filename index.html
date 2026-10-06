@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pane Studio — A Freely Splittable Desktop Workspace for Windows</title>
+<meta name="description" content="Pack file manager, terminal, browser, and document viewer into one freely splittable window. Save any layout as a workspace — it survives a reboot. Free, no ads, ~8.5 MB, Windows 10/11.">
+<meta property="og:title" content="Pane Studio — A Freely Splittable Desktop Workspace for Windows">
+<meta property="og:description" content="Instead of jumping between a pile of windows, put them together in one. File manager, terminal, browser, and document viewer — saved as reusable workspaces.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pane-studio.vercel.app/">
+<meta property="og:image" content="https://pane-studio.vercel.app/screenshots/img1.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Pane Studio",
+  "operatingSystem": "Windows 10, Windows 11 (64-bit)",
+  "applicationCategory": "UtilityApplication",
+  "softwareVersion": "1.0.4",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Pack four kinds of panes — file manager, terminal, web browser, and document viewer — into a single, freely splittable window. Layouts can be saved as workspaces that survive a reboot."
+}
+</script>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-soft: #161b22;
+    --card: #1a212b;
+    --border: #2b3442;
+    --text: #e6edf3;
+    --muted: #9aa7b6;
+    --accent: #4f8cff;
+    --accent-strong: #2f6fe0;
+    --glow: rgba(79, 140, 255, 0.14);
+    --ok: #3fb950;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--accent); text-decoration: none; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(13, 17, 23, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav {
+    display: flex; align-items: center; gap: 28px;
+    height: 60px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; color: var(--text); }
+  .brand img { width: 28px; height: 28px; }
+  .nav-links { display: flex; gap: 24px; margin-left: auto; }
+  .nav-links a { color: var(--muted); font-size: 14.5px; }
+  .nav-links a:hover { color: var(--text); }
+  .nav .btn { margin-left: 8px; }
+  @media (max-width: 720px) { .nav-links { display: none; } .nav .btn { margin-left: auto; } }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff;
+    padding: 9px 18px; border-radius: 8px;
+    font-weight: 600; font-size: 14.5px;
+    border: 1px solid var(--accent-strong);
+    transition: background .15s;
+  }
+  .btn:hover { background: var(--accent-strong); }
+  .btn-lg {
+    padding: 13px 26px; font-size: 16px; border-radius: 10px;
+  }
+  .btn-ghost {
+    background: transparent; border: 1px solid var(--border); color: var(--text);
+  }
+  .btn-ghost:hover { background: var(--bg-soft); }
+
+  /* Hero */
+  .hero {
+    padding: 72px 0 40px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, var(--glow), transparent),
+      var(--bg);
+  }
+  .hero h1 {
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    max-width: 780px;
+    margin: 0 auto 18px;
+  }
+  .hero p.sub {
+    color: var(--muted);
+    font-size: 18px;
+    max-width: 640px;
+    margin: 0 auto 30px;
+  }
+  .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
+  .hero-meta {
+    color: var(--muted); font-size: 13.5px;
+    display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;
+  }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .hero-meta .dot { color: var(--ok); }
+  .hero-shot {
+    margin: 44px auto 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+  }
+
+  /* Sections */
+  section { padding: 64px 0; }
+  section.alt { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .sec-head { text-align: center; max-width: 680px; margin: 0 auto 42px; }
+  .sec-head h2 { font-size: clamp(24px, 3.4vw, 32px); letter-spacing: -0.01em; margin-bottom: 10px; }
+  .sec-head p { color: var(--muted); }
+
+  /* Cards */
+  .grid { display: grid; gap: 20px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 880px) { .grid-3 { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .card h3 { font-size: 17px; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: 14.5px; }
+  .card .ico { font-size: 22px; margin-bottom: 12px; display: block; }
+
+  /* Pane types */
+  .pane-list { display: grid; gap: 12px; max-width: 760px; margin: 0 auto 40px; }
+  .pane-row {
+    display: flex; gap: 16px; align-items: baseline;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 20px;
+  }
+  .pane-row b { flex: 0 0 150px; font-size: 15.5px; }
+  .pane-row span { color: var(--muted); font-size: 14.5px; }
+  @media (max-width: 560px) { .pane-row { flex-direction: column; gap: 4px; } }
+
+  /* Feature blocks */
+  .feat { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; margin-bottom: 64px; }
+  .feat:last-child { margin-bottom: 0; }
+  .feat.flip .feat-img { order: -1; }
+  @media (max-width: 880px) {
+    .feat { grid-template-columns: 1fr; gap: 24px; }
+    .feat.flip .feat-img { order: 0; }
+  }
+  .feat h3 { font-size: 22px; margin-bottom: 12px; letter-spacing: -0.01em; }
+  .feat p { color: var(--muted); }
+  .feat-img {
+    border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+  }
+
+  /* Small feature list */
+  .mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+  @media (max-width: 880px) { .mini-grid { grid-template-columns: 1fr; } }
+  .mini {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 20px;
+  }
+  .mini b { display: block; font-size: 15px; margin-bottom: 4px; }
+  .mini span { color: var(--muted); font-size: 13.5px; }
+
+  /* Table */
+  .info-table { max-width: 720px; margin: 0 auto; border-collapse: collapse; width: 100%; }
+  .info-table td {
+    padding: 11px 16px; border-bottom: 1px solid var(--border);
+    font-size: 14.5px; vertical-align: top;
+  }
+  .info-table td:first-child { color: var(--muted); white-space: nowrap; width: 190px; }
+  .info-table tr:last-child td { border-bottom: none; }
+
+  /* Download band */
+  .dl-band {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 40px 32px;
+    text-align: center;
+  }
+  .dl-band h2 { font-size: 26px; margin-bottom: 10px; }
+  .dl-band p { color: var(--muted); margin-bottom: 24px; }
+  .dl-note { font-size: 13px; color: var(--muted); margin-top: 16px; }
+  .dl-note a { color: var(--muted); text-decoration: underline; }
+
+  /* Contact */
+  .contact-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 999px; padding: 9px 18px;
+    color: var(--text); font-size: 14.5px;
+  }
+  .chip:hover { border-color: var(--accent); }
+  .chip .sw { width: 10px; height: 10px; border-radius: 50%; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0;
+    color: var(--muted); font-size: 13.5px;
+  }
+  footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#"><img src="favicon.png" alt="Pane Studio logo"> Pane Studio</a>
+    <nav class="nav-links">
+      <a href="#why">Why</a>
+      <a href="#panes">Panes</a>
+      <a href="#features">Features</a>
+      <a href="#who">Who it's for</a>
+      <a href="#info">Info</a>
+    </nav>
+    <a class="btn" href="PaneStudio_1.0.4_overseas_x64-setup.exe">Download</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>Instead of jumping between a pile of windows, put them together in one.</h1>
+    <p class="sub">Pane Studio packs a file manager, terminal, web browser, and document viewer into a single, freely splittable window — and any layout you arrange can be saved as a workspace that survives a reboot.</p>
+    <div class="hero-cta">
+      <a class="btn btn-lg" href="PaneStudio_1.0.4_overseas_x64-setup.exe">⬇&nbsp; Download for Windows — Free</a>
+      <a class="btn btn-lg btn-ghost" href="#features">See what it does</a>
+    </div>
+    <div class="hero-meta">
+      <span><span class="dot">●</span> Free, no ads</span>
+      <span>Windows 10 / 11 (64-bit)</span>
+      <span>Installer approx. 8.5 MB</span>
+      <span>Built-in auto-updater</span>
+    </div>
+    <div class="hero-shot">
+      <img src="screenshots/img1.png" alt="Pane Studio main window: workspace bar on the left, folder, terminal and browser panes split on the right">
+    </div>
+  </div>
+</div>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Why You Need It</h2>
+      <p>To edit a spreadsheet while reading a document, looking something up in a browser, and running commands, you end up juggling four or five windows — hunting for them, minimizing them, covering each other up.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        <span class="ico">🪟</span>
+        <h3>One window, not five</h3>
+        <p>All panes live in a single window — one taskbar icon and one Alt+Tab entry in total, no matter how many tools are on screen.</p>
+      </div>
+      <div class="card">
+        <span class="ico">💾</span>
+        <h3>Layouts survive a reboot</h3>
+        <p>Windows Snap is only a temporary arrangement — everything is lost after a reboot. In Pane Studio, arrange a layout, give it a name, and save it as a workspace; one click on its tab restores the whole group.</p>
+      </div>
+      <div class="card">
+        <span class="ico">🗂️</span>
+        <h3>Switch like browser tabs</h3>
+        <p>Switching workspaces swaps one arrangement for another inside the same window — flipping between two layouts takes two clicks, and each workspace keeps its own folders, URLs, and documents.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="panes" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Five Pane Types</h2>
+      <p>The main interface has a <b>workspace bar on the left</b> (each tab is an independent window layout) and an arrangement of <b>panes</b> on the right. Any pane can be split horizontally or vertically, maximized, and restored — split ratios are remembered.</p>
+    </div>
+    <div class="pane-list">
+      <div class="pane-row"><b>📁 Folder</b><span>Uses the real Windows Explorer control — native system icons, thumbnails, sorting, and context menus, not an imitation list.</span></div>
+      <div class="pane-row"><b>⌨️ PowerShell</b><span>An embedded terminal that runs commands right in the pane; can be set to run a fixed command automatically at startup.</span></div>
+      <div class="pane-row"><b>🌐 Web</b><span>An embedded browser (WebView2) with address bar, back/forward, and refresh; each pane can enable sandbox mode independently, keeping login state isolated so multiple accounts never mix.</span></div>
+      <div class="pane-row"><b>📄 Document Viewer</b><span>Drag in a file to view PDF, Markdown, or Word; Excel workbooks (.xlsx) can be viewed, edited, and saved back to the original file.</span></div>
+      <div class="pane-row"><b>➕ Blank</b><span>An empty pane with no type yet — click an icon to switch it to any of the above.</span></div>
+    </div>
+    <div class="hero-shot" style="max-width: 900px;">
+      <img src="screenshots/img2.png" alt="Four pane types on one screen" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Feature Overview</h2>
+      <p>Everything runs inside one window — arranged once, reused forever.</p>
+    </div>
+
+    <div class="feat">
+      <div>
+        <h3>Truly native file view</h3>
+        <p>The folder pane embeds Windows' own Explorer control: icons, thumbnails, context menus, sorting, and zooming are all native system behavior. Supports instant keyword filtering and multiple zoom levels.</p>
+      </div>
+      <div class="feat-img"><img src="screenshots/img3.png" alt="Native folder view with system context menu" loading="lazy"></div>
+    </div>
+
+    <div class="feat flip">
+      <div>
+        <h3>Direct document preview and editing</h3>
+        <p>PDF, Markdown, and Word all support search and zoom as read-only previews; Excel workbooks (.xlsx) can be edited directly and saved back to the original file. Markdown headings, tables, code blocks, and images are fully rendered out of the box.</p>
+      </div>
+      <div class="feat-img"><img src="screenshots/img4.png" alt="Merged Excel editing in a document pane" loading="lazy"></div>
+    </div>
+
+    <div class="feat">
+      <div>
+        <h3>Embedded browser with per-pane sandbox</h3>
+        <p>Open web pages without leaving the workspace. Each web pane can enable sandbox mode independently, keeping login state isolated from other panes so multiple accounts never mix.</p>
+      </div>
+      <div class="feat-img"><img src="screenshots/img5.png" alt="Web pane with sandbox mode" loading="lazy"></div>
+    </div>
+
+    <div class="feat flip">
+      <div>
+        <h3>Cross-pane copy &amp; paste</h3>
+        <p>Copy, cut, and paste directly between panes. Pasting runs in a separate progress window showing real-time progress that can be cancelled at any time, so long tasks never freeze the UI.</p>
+      </div>
+      <div class="feat-img"><img src="screenshots/img6.png" alt="Paste progress window, cancellable at any time" loading="lazy"></div>
+    </div>
+
+    <div class="feat">
+      <div>
+        <h3>Multiple workspaces, long-term reuse</h3>
+        <p>Create as many workspaces as you like, each with its own layout. Rename, color-tag, drag to reorder, and delete from the workspace bar's context menu — layouts become assets you keep using.</p>
+      </div>
+      <div class="feat-img"><img src="screenshots/img7.png" alt="Markdown reading and workspace context menu" loading="lazy"></div>
+    </div>
+
+    <div class="mini-grid">
+      <div class="mini"><b>Built-in terminal</b><span>The PowerShell pane runs commands directly in a specified directory; supports running a fixed command automatically at startup.</span></div>
+      <div class="mini"><b>AI automation support</b><span>Enable "Agent support" in Settings and the app reserves a local debug port, letting external AI tools (e.g. Playwright) take over web panes for automation — turn it off whenever you're done.</span></div>
+      <div class="mini"><b>File change watching</b><span>Folder contents refresh automatically when modified externally — no need to press F5.</span></div>
+      <div class="mini"><b>Dark &amp; light themes</b><span>Switches automatically with your Windows system setting.</span></div>
+      <div class="mini"><b>Always on top</b><span>Pin the window above everything with one click.</span></div>
+      <div class="mini"><b>7 UI languages</b><span>Simplified Chinese, Traditional Chinese, English, Japanese, German, Spanish, French — selected automatically based on the system language.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="who" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Who It's For</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Developers / Ops</h3>
+        <p>Open a source directory on the left, run a terminal on the right, add a browser pane to look up errors when needed. Set the layout once and reuse it forever.</p>
+      </div>
+      <div class="card">
+        <h3>Data analysis / Finance / Admin</h3>
+        <p>Comparing multiple Excel files is a daily must: arrange two or three sheets as panes, view and edit them side by side, then save each back to its original file.</p>
+      </div>
+      <div class="card">
+        <h3>Document reading / Light office work</h3>
+        <p>Treat it as an instantly available lightweight Office: when a PDF, Word, or Excel file arrives and you want a quick look, just drag it into a pane — Excel workbooks (.xlsx) can even be edited and saved.</p>
+      </div>
+      <div class="card">
+        <h3>Remote desktop users</h3>
+        <p>Files in a remote clipboard can be pasted directly into a pane — no more manual uploading and downloading.</p>
+      </div>
+      <div class="card">
+        <h3>One-off tasks</h3>
+        <p>Tidy up files, grab information from a web page, or process a spreadsheet; close the window when done and leave no pile of leftover windows behind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="know">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Things to Know</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>WebView2 Runtime</h3>
+        <p>Web panes are based on Microsoft Edge WebView2, which Windows 10/11 usually includes out of the box. If a web pane says it can't initialize, install the runtime from Microsoft's website.</p>
+      </div>
+      <div class="card">
+        <h3>Excel editing involves trade-offs</h3>
+        <p>The built-in spreadsheet editor is deliberately lightweight — "quick viewing + routine data edits". It is not a full Office replacement: on save, advanced features in the original document such as images, charts, macros, and complex formulas may be lost. The app clearly warns you before the first save — always back up important files.</p>
+      </div>
+      <div class="card">
+        <h3>Mouse hooks</h3>
+        <p>To switch focus correctly between panes, the app installs low-level mouse/keyboard hooks; this is normal functionality. A few security tools may flag it as suspicious — simply add it to the whitelist.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="info" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>App Information</h2>
+    </div>
+    <table class="info-table">
+      <tr><td>Name</td><td>Pane Studio</td></tr>
+      <tr><td>Current version</td><td>1.0.4</td></tr>
+      <tr><td>Size</td><td>approx. 8.5 MB (installer)</td></tr>
+      <tr><td>Category</td><td>System Tools → File Management / Multi-pane Workspace</td></tr>
+      <tr><td>License</td><td>Free</td></tr>
+      <tr><td>Supported OS</td><td>Windows 10 / 11 (64-bit)</td></tr>
+      <tr><td>UI languages</td><td>Simplified Chinese, Traditional Chinese, English, Japanese, German, Spanish, French</td></tr>
+      <tr><td>Required component</td><td>Microsoft Edge WebView2 Runtime</td></tr>
+      <tr><td>Installer formats</td><td>NSIS (.exe), MSI</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="download">
+  <div class="wrap">
+    <div class="dl-band">
+      <h2>Ready to try it?</h2>
+      <p>Free, no ads. Set your layout once — Pane Studio keeps it.</p>
+      <a class="btn btn-lg" href="PaneStudio_1.0.4_overseas_x64-setup.exe">⬇&nbsp; Download PaneStudio_1.0.4_overseas_x64-setup.exe</a>
+      <p class="dl-note">Windows 10 / 11 (64-bit) · approx. 8.5 MB · built-in auto-updater prompts you when a new version is released</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Contact</h2>
+      <p>Questions, feedback, or bug reports — reach us on any of these:</p>
+    </div>
+    <div class="contact-row">
+      <a class="chip" href="https://wa.me/message/PKCGGQZG2Q7PF1" target="_blank" rel="noopener"><span class="sw" style="background:#25D366"></span>WhatsApp</a>
+      <a class="chip" href="https://m.me/wenchuan.quwen" target="_blank" rel="noopener"><span class="sw" style="background:#0084FF"></span>Messenger</a>
+      <a class="chip" href="mailto:w13683434020@gmail.com"><span class="sw" style="background:#EA4335"></span>w13683434020@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Pane Studio. All rights reserved.</span>
+    <span>For Windows 10 / 11 (64-bit) · Version 1.0.4</span>
+  </div>
+</footer>
+
+</body>
+</html>
