@@ -1,22 +1,17 @@
 {
-  "version": "1.0.3",
-  "pubDate": 1791244871284,
+  "version": "1.0.4",
+  "pubDate": 1791283600244,
   "notes": {
-    "zh": "- 新增：自动更新\n- 新增：空白窗格\n- 修复: MD预览无法缩放图片问题\n- 修复:文件夹拖放操作若干bug",
-    "zh-TW": "- 新增：自動更新\n- 新增：空白窗格\n- 修復：MD 預覽無法縮放圖片問題\n- 修復：資料夾拖放操作若干 bug",
-    "en": "- New: Auto-update\n- New: Blank pane\n- Fixed: Images could not be zoomed in the Markdown preview\n- Fixed: Several bugs in folder drag-and-drop",
-    "ja": "- 新機能：自動アップデート\n- 新機能：空白ペイン\n- 修正：MDプレビューで画像を拡大・縮小できない問題\n- 修正：フォルダーのドラッグ＆ドロップに関する不具合",
-    "de": "- Neu: Automatische Updates\n- Neu: Leeres Pane\n- Behoben: Bilder ließen sich in der MD-Vorschau nicht skalieren\n- Behoben: Mehrere Fehler bei Drag-and-Drop in Ordnern",
-    "es": "- Nuevo: Actualización automática\n- Nuevo: Panel en blanco\n- Corregido: no se podían escalar las imágenes en la vista previa de Markdown\n- Corregido: varios errores al arrastrar y soltar en carpetas",
-    "fr": "- Nouveau : Mise à jour automatique\n- Nouveau : Volet vide\n- Corrigé : impossible de zoomer sur les images dans l'aperçu Markdown\n- Corrigé : plusieurs bugs de glisser-déposer dans les dossiers"
+    "zh": "",
+    "en": ""
   },
   "platforms": {
     "windows-x64": {
       "urls": [
         {
-          "url": "https://pane-studio.vercel.app/pane-studio_1.0.3_overseas_x64-setup.exe",
-          "size": 8923259,
-          "sha256": "c83ec916cbfe421cee364f544057082e5f918b61c9dcfd8f0f0a5de9d30a93bc"
+          "url": "https://pane-studio.vercel.app/PaneStudio_1.0.4_overseas_x64-setup.exe",
+          "size": 8937536,
+          "sha256": "7806907fbe89d1c65adce8c952f528fcae7405179baa091e8ce0f691be0a4e49"
         }
       ]
     }
