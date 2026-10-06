@@ -34,7 +34,7 @@ The main interface has two parts: a **workspace bar** on the left (each tab is a
 | **Folder** | Uses the real Windows Explorer control — native system icons, thumbnails, sorting, and context menus, not an imitation list |
 | **PowerShell** | An embedded terminal that runs commands right in the pane; can be set to run a fixed command automatically at startup |
 | **Web** | An embedded browser (WebView2) with address bar, back/forward, and refresh; each pane can enable **sandbox mode** independently, keeping login state isolated from other panes so multiple accounts never mix |
-| **Document Viewer** | Drag in a file to view PDF, Markdown, or Word; Excel can be viewed, edited, and saved back to the original file |
+| **Document Viewer** | Drag in a file to view PDF, Markdown, or Word; Excel workbooks (.xlsx) can be viewed, edited, and saved back to the original file |
 | **Blank** | An empty pane with no type yet — click an icon to switch it to any of the above |
 
 Any pane can be **split horizontally** or **split vertically**, and can be **maximized** to fill the whole workspace and then restored; split ratios are remembered.
@@ -48,7 +48,7 @@ Any pane can be **split horizontally** or **split vertically**, and can be **max
 
 ![Native folder view and context menu](screenshots/img3.png)
 
-- **Direct document preview and editing** — PDF, Markdown, and Word all support search and zoom as read-only previews; Excel can be edited directly and saved back to the original file.
+- **Direct document preview and editing** — PDF, Markdown, and Word all support search and zoom as read-only previews; Excel workbooks (.xlsx) can be edited directly and saved back to the original file.
 
 ![Document viewing and direct Excel editing](screenshots/img4.png)
 
@@ -74,7 +74,7 @@ Any pane can be **split horizontally** or **split vertically**, and can be **max
 
 - **Developers / Ops** — open a source directory on the left, run a terminal on the right, add a browser pane to look up errors when needed; set the layout once and reuse it forever.
 - **Data analysis / Finance / Admin** — comparing multiple Excel files is a daily must: arrange two or three sheets as panes, view and edit them side by side, then save each back to its original file — no more switching between workbook windows.
-- **Document reading / Light office work** — treat it as an instantly available lightweight Office: when a PDF, Word, or Excel file arrives and you want a quick look, just drag it into a pane — and Excel can even be edited and saved.
+- **Document reading / Light office work** — treat it as an instantly available lightweight Office: when a PDF, Word, or Excel file arrives and you want a quick look, just drag it into a pane — and Excel workbooks (.xlsx) can even be edited and saved.
 - **Remote desktop users** — files in a remote clipboard can be pasted directly into a pane, no more manual uploading and downloading.
 - **One-off tasks** — tidy up files, grab information from a web page, or process a spreadsheet; close the window when done and leave no pile of leftover windows behind.
 
