@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Pane Studio Workspace</title>
+<meta name="description" content="Privacy policy for Pane Studio Workspace: what the app stores locally, the anonymous usage analytics it sends, and what it never does.">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-soft: #161b22;
+    --card: #1a212b;
+    --border: #2b3442;
+    --text: #e6edf3;
+    --muted: #9aa7b6;
+    --accent: #4f8cff;
+    --accent-strong: #2f6fe0;
+    --glow: rgba(79, 140, 255, 0.14);
+    --ok: #3fb950;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  header {
+    background: rgba(13, 17, 23, 0.9);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav { display: flex; align-items: center; gap: 10px; height: 60px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; }
+  .brand:hover { text-decoration: none; }
+  .brand img { width: 28px; height: 28px; }
+  .nav .back { margin-left: auto; color: var(--muted); font-size: 14.5px; }
+  .hero { padding: 56px 0 8px; text-align: center; background: radial-gradient(ellipse 80% 50% at 50% -10%, var(--glow), transparent), var(--bg); }
+  .hero h1 { font-size: clamp(28px, 4.5vw, 40px); letter-spacing: -0.02em; }
+  .hero p { color: var(--muted); margin-top: 10px; }
+  .doc { padding: 36px 0 64px; }
+  .doc h2 { font-size: 21px; margin: 40px 0 12px; padding-top: 8px; }
+  .doc h2:first-child { margin-top: 0; }
+  .doc p, .doc li { color: var(--muted); }
+  .doc b { color: var(--text); }
+  .doc ul { padding-left: 22px; margin: 10px 0; }
+  .doc li { margin-bottom: 6px; }
+  .doc .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin: 16px 0;
+  }
+  .doc .card p:last-child { margin-bottom: 0; }
+  footer { border-top: 1px solid var(--border); padding: 24px 0; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="favicon.png" alt="Pane Studio logo"> Pane Studio Workspace</a>
+    <a class="back" href="index.html">&larr; Back to homepage</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>Privacy Policy</h1>
+    <p>Effective date: October 7, 2026 · Applies to Pane Studio Workspace (Microsoft Store and direct-download versions)</p>
+  </div>
+</div>
+
+<div class="doc">
+  <div class="wrap">
+
+    <div class="card">
+      <p><b>In one sentence:</b> Pane Studio Workspace works entirely on your own files on your own computer. We never see your documents, and we never sell data — there is no advertising in the app and no account system.</p>
+    </div>
+
+    <h2>What the app stores (and where)</h2>
+    <p>Everything the app produces stays on your device: workspace layouts, pane settings, working copies of edited documents, and preferences. None of this is uploaded to us or to any third party. There is no sign-up, no login, and no account, so we hold no personal profiles.</p>
+
+    <h2>Anonymous usage analytics (Microsoft Clarity)</h2>
+    <p>Released versions of the app report <b>anonymous product-usage statistics</b> through Microsoft Clarity, to learn which features are used and find crashes:</p>
+    <ul>
+      <li>Collected: interaction events (clicks, scrolls), app version, Windows version, display size, approximate country/region derived from IP, and similar technical diagnostics.</li>
+      <li>Not collected: the contents of any file or folder you open, the addresses of pages you visit in web panes, text you type, or any name, email, or identifier that could directly identify you.</li>
+      <li>Used for: product improvement only. The data is not used for advertising and is not sold or shared with advertisers.</li>
+    </ul>
+    <p>This data is handled by Microsoft under the <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a>.</p>
+
+    <h2>Update checks</h2>
+    <p>The direct-download version contacts our update server periodically to check whether a new version exists. The request contains version numbers only — no personal data. <b>The Microsoft Store version performs no update checks at all</b>: updates are delivered exclusively by the Store.</p>
+
+    <h2>Web panes</h2>
+    <p>Web panes are embedded Microsoft Edge WebView2 browsers. When you open a web page, you are connecting directly to that site, and your activity is governed by that site's own policies — exactly as in any browser. Optional per-pane sandbox mode keeps login cookies isolated between panes, locally on your device.</p>
+
+    <h2>Local automation features</h2>
+    <p>Transparency about two low-level behaviors, both purely local — nothing is recorded or sent anywhere:</p>
+    <ul>
+      <li><b>Mouse/keyboard hooks</b>: while the app runs it installs low-level hooks so that focus switches correctly between panes (used like global shortcuts). They observe no content and communicate nothing.</li>
+      <li><b>Agent support</b> (off by default): an optional setting that opens a <b>local-only</b> port so external AI tools on the same machine can drive web panes for automation. It has no remote-control capability and can be switched off at any time.</li>
+    </ul>
+
+    <h2>Data removal</h2>
+    <p>Uninstalling the app removes its settings and stored data (for the Store version, data lives in the app's own container and is removed with it). For any question about data we may hold — in practice only anonymous analytics — contact us and we will help.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about this policy: <a href="mailto:w13683434020@gmail.com">w13683434020@gmail.com</a>, or via the contact channels on the <a href="index.html#contact">homepage</a>.</p>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Pane Studio. All rights reserved.</span>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+</footer>
+
+</body>
+</html>
