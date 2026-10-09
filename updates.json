@@ -1,6 +1,6 @@
 {
   "version": "1.0.4",
-  "pubDate": 1791418584043,
+  "pubDate": 1791519969535,
   "notes": {
     "zh": "",
     "en": ""
@@ -9,9 +9,9 @@
     "windows-x64": {
       "urls": [
         {
-          "url": "https://pane-studio.vercel.app/PaneStudio_1.0.4_overseas_x64-setup.exe",
-          "size": 8944236,
-          "sha256": "59f0bf53194b804ca23b65476d39ce05e2c97806abfc265310a4cdbc82913ce1"
+          "url": "https://pane-studio.vercel.app/PaneStudioWorkspace_1.0.4_overseas_x64-setup.exe",
+          "size": 8949089,
+          "sha256": "f77785c920a699c8b7b7269acf32bbddaccd70202ab2f2fbc2a8ab17afaf1ea4"
         }
       ]
     }
