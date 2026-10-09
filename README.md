@@ -7,7 +7,7 @@ Pack four kinds of panes — file manager, terminal, web browser, and document v
 ## Download
 
 - **Windows 10 / 11 (64-bit)**, free, no ads, installer approx. 8.5 MB:
-  [PaneStudio_1.0.4_overseas_x64-setup.exe](https://raw.githubusercontent.com/xlan8/paneStudioRelease/refs/heads/main/PaneStudioWorkspace_1.0.4_overseas_x64-setup.exe)
+  [PaneStudioWorkspace_1.0.4_overseas_x64-setup.exe](https://raw.githubusercontent.com/xlan8/paneStudioRelease/refs/heads/main/PaneStudioWorkspace_1.0.4_overseas_x64-setup.exe)
 - The app has a built-in auto-updater: when a new version is released, you'll be prompted at startup and can upgrade with one click.
 - UI languages: Simplified Chinese, Traditional Chinese, English, Japanese, German, Spanish, French (selected automatically based on the system language).
 - Web panes are based on Microsoft Edge WebView2, which Windows 10/11 usually includes out of the box.
@@ -82,7 +82,6 @@ Any pane can be **split horizontally** or **split vertically**, and can be **max
 
 - **Requires Microsoft Edge WebView2 Runtime** — Windows 10/11 usually includes it; if a web pane says it can't initialize, install the runtime from Microsoft's website.
 - **Excel editing involves trade-offs** — the built-in spreadsheet editor is deliberately lightweight, positioned as "quick viewing + routine data edits": changing values, adding records, and adjusting content are fully covered, and simple formulas calculate normally. It is not a full Office replacement: on save, advanced features in the original document such as images, charts, macros, and complex formulas may be lost. The app clearly warns you before the first save — always back up important files.
-- **Mouse hooks** — to switch focus correctly between panes, the app installs low-level mouse/keyboard hooks; this is normal functionality. A few security tools may flag it as suspicious — simply add it to the whitelist.
 
 ## App Information
 
