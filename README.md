@@ -25,13 +25,13 @@ Pane Studio Workspace's approach is straightforward: **instead of jumping betwee
 - Switching workspaces works like browser tabs: rather than swapping an entire desktop, you swap one arrangement for another inside the same window — flipping between two layouts takes two clicks;
 - Files copied in one folder pane paste directly into another; the terminal, web pages, and documents sit side by side on the same screen. The next time you open a tab, the folders, URLs, and documents you had open come back with it.
 
-## Five Pane Types
+## Five Pane Types — Combine Freely, Open Any Number
 
 The main interface has two parts: a **workspace bar** on the left (each tab is an independent window layout) and an arrangement of **panes** on the right. Each pane can be:
 
 | Pane type | Description |
 | --- | --- |
-| **Folder** | Uses the real Windows Explorer control — native system icons, thumbnails, sorting, and context menus, not an imitation list |
+| **Folder** | Uses the real Windows Explorer control — native system icons, thumbnails, sorting, and the full right-click menu, with SVN, Git, and every other shell extension intact. Not an imitation list |
 | **PowerShell** | An embedded terminal that runs commands right in the pane; can be set to run a fixed command automatically at startup |
 | **Web** | An embedded browser (WebView2) with address bar, back/forward, and refresh; each pane can enable **sandbox mode** independently, keeping login state isolated from other panes so multiple accounts never mix |
 | **Document Viewer** | Drag in a file to view PDF, Markdown, or Word; Excel workbooks (.xlsx) can be viewed, edited, and saved back to the original file |
@@ -44,7 +44,7 @@ Any pane can be **split horizontally** or **split vertically**, and can be **max
 ## Feature Overview
 
 - **Freely splittable layout** — any pane can be split horizontally or vertically; maximize and restore with a click; split ratios are saved automatically.
-- **Truly native file view** — the folder pane embeds Windows' own Explorer control: icons, thumbnails, context menus, sorting, and zooming are all native system behavior; supports instant keyword filtering and multiple zoom levels.
+- **Truly native file view** — the folder pane embeds Windows' own Explorer control, so a right-click opens the genuine system context menu with every shell extension intact: with TortoiseSVN installed you can update, commit, and browse logs right inside the pane; with Git you can open Git Bash, pull, and push; compress or extract archives, scan for viruses, open with another app — anything Explorer can do on right-click works here identically. Icons, thumbnails, sorting, and zooming are native system behavior too, plus instant keyword filtering and multiple zoom levels.
 
 ![Native folder view and context menu](screenshots/img3.png)
 
@@ -65,10 +65,20 @@ Any pane can be **split horizontally** or **split vertically**, and can be **max
 
 ![Markdown reading and workspace context menu](screenshots/img7.png)
 
+- **A real-world task: a Microsoft Store submission in three panes** — the screenshot above is the actual layout used when submitting the app to the Microsoft Store: **top-left** is a folder pane holding the screenshots to upload; **bottom-left** is a web pane open on the Store submission page; the **right** side is a document pane showing the submission checklist as Markdown. Screenshots are dragged straight from the folder pane into the upload area of the web page, following the checklist as you fill in the form — **all without ever leaving this one window**, one window for the whole process.
+
+![Three-pane layout during a Microsoft Store submission: screenshots folder top-left, Store submission page bottom-left, submission checklist Markdown on the right](screenshots/img8.png)
+
+- **Side by side with your other apps: assets on the left, design on the right** — Pane Studio Workspace isn't meant to replace the software you already use — it gives it a better place on screen. On the **left** is Pane Studio Workspace, with a folder pane holding the art assets for the job at hand — icons, slices, and reference images, filed by project. On the **right**, side by side, is Photoshop, with a UI mockup in progress. Assets are always within reach: drag a file straight out of the pane into Photoshop, or copy and paste between the two windows — no more Alt+Tab ping-pong between Explorer and PS. Save in Photoshop and the folder pane on the left **refreshes instantly**, so newly exported slices and updated images appear in the list right away. And **with a second monitor it gets even better: Pane Studio Workspace on one screen, Photoshop on the other**, so each app gets a full screen of its own.
+
+![Pane Studio Workspace side by side with Photoshop: on the left, Pane Studio Workspace's folder pane shows the art assets of a UI project; on the right, Photoshop is being used to design the interface](screenshots/img9.png)
+
 - **Built-in terminal** — the PowerShell pane runs commands directly in a specified directory; supports running a fixed command automatically at startup.
 - **AI automation support** — enable "Agent support" in Settings and the app reserves a local debug port, letting external AI tools (e.g. Playwright) take over web panes for automation; turn it off whenever you're done.
 - **File change watching** — folder contents refresh automatically when modified externally, no need to press F5.
-- **Dark & light themes** — switches automatically with your Windows system setting; **always on top** pins the window above everything with one click.
+- **Dark & light themes** — switches automatically with your Windows system setting.
+- **Always on top** — pin the window above everything with one click.
+- **7 UI languages** — Simplified Chinese, Traditional Chinese, English, Japanese, German, Spanish, French, selected automatically based on the system language.
 
 ## Who It's For
 
@@ -82,6 +92,7 @@ Any pane can be **split horizontally** or **split vertically**, and can be **max
 
 - **Requires Microsoft Edge WebView2 Runtime** — Windows 10/11 usually includes it; if a web pane says it can't initialize, install the runtime from Microsoft's website.
 - **Excel editing involves trade-offs** — the built-in spreadsheet editor is deliberately lightweight, positioned as "quick viewing + routine data edits": changing values, adding records, and adjusting content are fully covered, and simple formulas calculate normally. It is not a full Office replacement: on save, advanced features in the original document such as images, charts, macros, and complex formulas may be lost. The app clearly warns you before the first save — always back up important files.
+- **Local debug port** — "Agent support" in Settings is off by default. When enabled, the app reserves a local debug port so AI tools on the same machine can drive web panes; it is not reachable from outside your PC and uploads nothing. If your firewall prompts you, allowing local access is fine.
 
 ## App Information
 
@@ -96,3 +107,15 @@ Any pane can be **split horizontally** or **split vertically**, and can be **max
 | UI languages | Simplified Chinese, Traditional Chinese, English, Japanese, German, Spanish, French |
 | Required component | Microsoft Edge WebView2 Runtime |
 | Installer formats | NSIS (.exe), MSI |
+
+## Contact
+
+Questions, feedback, or bug reports — reach us on any of these:
+
+- **WhatsApp**: <https://wa.me/message/PKGQZQG2Q7PF1>
+- **Messenger**: <https://m.me/wenchuan.quwen>
+- **Email**: <w13683434020@gmail.com>
+
+---
+
+© 2026 Pane Studio Workspace. All rights reserved. For Windows 10 / 11 (64-bit) · Version 1.0.4 · [Privacy Policy](privacy.html)
