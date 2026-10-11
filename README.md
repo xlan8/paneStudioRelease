@@ -1,8 +1,8 @@
-# Pane Studio — A Freely Splittable Desktop Workspace for Windows
+# Pane Studio Workspace — A Freely Splittable Desktop Workspace for Windows
 
 Pack four kinds of panes — file manager, terminal, web browser, and document viewer — into a single, freely splittable window. Any pane can be split horizontally or vertically, maximized, and restored. A layout you arrange can be named and saved as a **workspace**; clicking its tab brings the whole group back, and it survives a reboot unchanged.
 
-![Pane Studio main window overview](screenshots/img1.png)
+![Pane Studio Workspace main window overview](screenshots/img1.png)
 
 ## Download
 
@@ -18,7 +18,7 @@ Windows File Explorer works well, but it can only do one thing at a time. To edi
 
 When it comes to "tiling windows," Windows 11 does offer Snap Layouts and virtual desktops, but both manage a set of independent windows: snapping is only a temporary arrangement — the layout can't be saved or named, and **everything is lost after a reboot**, while the taskbar and Alt+Tab remain cluttered with a long list of window entries.
 
-Pane Studio's approach is straightforward: **instead of jumping between a pile of windows, put them together in one.**
+Pane Studio Workspace's approach is straightforward: **instead of jumping between a pile of windows, put them together in one.**
 
 - All panes live in a single window — one taskbar icon and one Alt+Tab entry in total;
 - Arrange a layout, give it a name, and save it as a workspace; next time, one click on its tab restores the whole group;
@@ -87,7 +87,7 @@ Any pane can be **split horizontally** or **split vertically**, and can be **max
 
 | Item | Details |
 | --- | --- |
-| Name | Pane Studio |
+| Name | Pane Studio Workspace |
 | Current version | 1.0.4 |
 | Size | approx. 8.5 MB (installer) |
 | Category | System Tools → File Management / Multi-pane Workspace |

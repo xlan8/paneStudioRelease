@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pane Studio — A Freely Splittable Desktop Workspace for Windows</title>
+<title>Pane Studio Workspace — A Freely Splittable Desktop Workspace for Windows</title>
 <meta name="description" content="Pack file manager, terminal, browser, and document viewer into one freely splittable window. Save any layout as a workspace — it survives a reboot. Free, no ads, ~8.5 MB, Windows 10/11.">
-<meta property="og:title" content="Pane Studio — A Freely Splittable Desktop Workspace for Windows">
+<meta property="og:title" content="Pane Studio Workspace — A Freely Splittable Desktop Workspace for Windows">
 <meta property="og:description" content="Instead of jumping between a pile of windows, put them together in one. File manager, terminal, browser, and document viewer — saved as reusable workspaces.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pane-studio.vercel.app/">
@@ -15,7 +15,7 @@
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Pane Studio",
+  "name": "Pane Studio Workspace",
   "operatingSystem": "Windows 10, Windows 11 (64-bit)",
   "applicationCategory": "UtilityApplication",
   "softwareVersion": "1.0.4",
@@ -157,15 +157,19 @@
   @media (max-width: 560px) { .pane-row { flex-direction: column; gap: 4px; } }
 
   /* Feature blocks */
-  .feat { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; margin-bottom: 64px; }
+  #features .wrap { max-width: 1340px; }
+  .feat { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 48px; align-items: center; margin-bottom: 64px; }
   .feat:last-child { margin-bottom: 0; }
+  .feat.flip { grid-template-columns: 1.18fr 0.82fr; }
   .feat.flip .feat-img { order: -1; }
   @media (max-width: 880px) {
-    .feat { grid-template-columns: 1fr; gap: 24px; }
+    .feat, .feat.flip { grid-template-columns: 1fr; gap: 24px; }
     .feat.flip .feat-img { order: 0; }
   }
   .feat h3 { font-size: 22px; margin-bottom: 12px; letter-spacing: -0.01em; }
   .feat p { color: var(--muted); }
+  .feat p b { color: var(--text); }
+  .feat p .hl { color: var(--accent); font-weight: 700; }
   .feat-img {
     border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
     box-shadow: 0 12px 32px rgba(0,0,0,0.35);
@@ -226,7 +230,7 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#"><img src="favicon.png" alt="Pane Studio logo"> Pane Studio</a>
+    <a class="brand" href="#"><img src="favicon.png" alt="Pane Studio Workspace logo"> Pane Studio Workspace</a>
     <nav class="nav-links">
       <a href="#why">Why</a>
       <a href="#panes">Panes</a>
@@ -241,7 +245,7 @@
 <div class="hero">
   <div class="wrap">
     <h1>Instead of jumping between a pile of windows, put them together in one.</h1>
-    <p class="sub">Pane Studio packs a file manager, terminal, web browser, and document viewer into a single, freely splittable window — and any layout you arrange can be saved as a workspace that survives a reboot.</p>
+    <p class="sub">Pane Studio Workspace packs a file manager, terminal, web browser, and document viewer into a single, freely splittable window — and any layout you arrange can be saved as a workspace that survives a reboot.</p>
     <div class="hero-cta">
       <a class="btn btn-lg" href="PaneStudioWorkspace_1.0.4_overseas_x64-setup.exe">⬇&nbsp; Download for Windows — Free</a>
       <a class="btn btn-lg btn-ghost" href="#features">See what it does</a>
@@ -253,7 +257,7 @@
       <span>Built-in auto-updater</span>
     </div>
     <div class="hero-shot">
-      <img src="screenshots/img1.png" alt="Pane Studio main window: workspace bar on the left, folder, terminal and browser panes split on the right">
+      <img src="screenshots/img1.png" alt="Pane Studio Workspace main window: workspace bar on the left, folder, terminal and browser panes split on the right">
     </div>
   </div>
 </div>
@@ -273,7 +277,7 @@
       <div class="card">
         <span class="ico">💾</span>
         <h3>Layouts survive a reboot</h3>
-        <p>Windows Snap is only a temporary arrangement — everything is lost after a reboot. In Pane Studio, arrange a layout, give it a name, and save it as a workspace; one click on its tab restores the whole group.</p>
+        <p>Windows Snap is only a temporary arrangement — everything is lost after a reboot. In Pane Studio Workspace, arrange a layout, give it a name, and save it as a workspace; one click on its tab restores the whole group.</p>
       </div>
       <div class="card">
         <span class="ico">🗂️</span>
@@ -313,7 +317,7 @@
     <div class="feat">
       <div>
         <h3>Truly native file view</h3>
-        <p>The folder pane embeds Windows' own Explorer control: icons, thumbnails, context menus, sorting, and zooming are all native system behavior. Supports instant keyword filtering and multiple zoom levels.</p>
+        <p>The folder pane embeds <span class="hl">Windows' own Explorer control</span>: icons, thumbnails, context menus, sorting, and zooming are all native system behavior. Supports instant keyword filtering and multiple zoom levels.</p>
       </div>
       <div class="feat-img"><img src="screenshots/img3.png" alt="Native folder view with system context menu" loading="lazy"></div>
     </div>
@@ -321,7 +325,7 @@
     <div class="feat flip">
       <div>
         <h3>Direct document preview and editing</h3>
-        <p>PDF, Markdown, and Word all support search and zoom as read-only previews; Excel workbooks (.xlsx) can be edited directly and saved back to the original file. Markdown headings, tables, code blocks, and images are fully rendered out of the box.</p>
+        <p>PDF, Markdown, and Word all support search and zoom as read-only previews; Excel workbooks (.xlsx) <span class="hl">can be edited directly and saved back to the original file</span>. Markdown headings, tables, code blocks, and images are fully rendered out of the box.</p>
       </div>
       <div class="feat-img"><img src="screenshots/img4.png" alt="Merged Excel editing in a document pane" loading="lazy"></div>
     </div>
@@ -329,7 +333,7 @@
     <div class="feat">
       <div>
         <h3>Embedded browser with per-pane sandbox</h3>
-        <p>Open web pages without leaving the workspace. Each web pane can enable sandbox mode independently, keeping login state isolated from other panes so multiple accounts never mix.</p>
+        <p>Open web pages without leaving the workspace. Each web pane can enable sandbox mode independently, keeping <span class="hl">login state isolated</span> from other panes so multiple accounts never mix.</p>
       </div>
       <div class="feat-img"><img src="screenshots/img5.png" alt="Web pane with sandbox mode" loading="lazy"></div>
     </div>
@@ -337,7 +341,7 @@
     <div class="feat flip">
       <div>
         <h3>Cross-pane copy &amp; paste</h3>
-        <p>Copy, cut, and paste directly between panes. Pasting runs in a separate progress window showing real-time progress that can be cancelled at any time, so long tasks never freeze the UI.</p>
+        <p><span class="hl">Copy, cut, and paste directly between panes</span>. Pasting runs in a separate progress window showing real-time progress that <span class="hl">can be cancelled at any time</span>, so long tasks never freeze the UI.</p>
       </div>
       <div class="feat-img"><img src="screenshots/img6.png" alt="Paste progress window, cancellable at any time" loading="lazy"></div>
     </div>
@@ -345,7 +349,7 @@
     <div class="feat">
       <div>
         <h3>Multiple workspaces, long-term reuse</h3>
-        <p>Create as many workspaces as you like, each with its own layout. Rename, color-tag, drag to reorder, and delete from the workspace bar's context menu — layouts become assets you keep using.</p>
+        <p>Create as many workspaces as you like, each with its own layout. Rename, color-tag, drag to reorder, and delete from the workspace bar's context menu — layouts become <span class="hl">assets you keep using</span>.</p>
       </div>
       <div class="feat-img"><img src="screenshots/img7.png" alt="Markdown reading and workspace context menu" loading="lazy"></div>
     </div>
@@ -353,9 +357,17 @@
     <div class="feat flip">
       <div>
         <h3>A real-world task: a Microsoft Store submission in three panes</h3>
-        <p>The screenshot above is the actual layout used when submitting the app to the Microsoft Store: <b>top-left</b> is a folder pane holding the screenshots to upload; <b>bottom-left</b> is a web pane open on the Store submission page; the <b>right</b> side is a document pane showing the submission checklist as Markdown. Screenshots are dragged straight from the folder pane into the upload area of the web page, following the checklist as you fill in the form — all without ever leaving this one window.</p>
+        <p>The screenshot above is the actual layout used when submitting the app to the Microsoft Store: <b>top-left</b> is a folder pane holding the screenshots to upload; <b>bottom-left</b> is a web pane open on the Store submission page; the <b>right</b> side is a document pane showing the submission checklist as Markdown. Screenshots are dragged straight from the folder pane into the upload area of the web page, following the checklist as you fill in the form — <span class="hl">all without ever leaving this one window</span>.</p>
       </div>
       <div class="feat-img"><img src="screenshots/img8.png" alt="Three-pane layout during a Microsoft Store submission: screenshots folder top-left, Store submission page bottom-left, submission checklist Markdown on the right" loading="lazy"></div>
+    </div>
+
+    <div class="feat">
+      <div>
+        <h3>Side by side with your other apps: assets on the left, design on the right</h3>
+        <p>Pane Studio Workspace isn't meant to replace the software you already use — it gives it a better place on screen. On the <b>left</b> is Pane Studio Workspace, with a folder pane holding the art assets for the job at hand — icons, slices, and reference images, filed by project. On the <b>right</b>, side by side, is Photoshop, with a UI mockup in progress. Assets are always within reach: drag a file straight out of the pane into Photoshop, or copy and paste between the two windows — no more Alt+Tab ping-pong between Explorer and PS. Save in Photoshop and the folder pane on the left <span class="hl">refreshes instantly</span>, so newly exported slices and updated images appear in the list right away. And <span class="hl">with a second monitor it gets even better: Pane Studio Workspace on one screen, Photoshop on the other</span>, so each app gets a full screen of its own.</p>
+      </div>
+      <div class="feat-img"><img src="screenshots/img9.png" alt="Pane Studio Workspace side by side with Photoshop: on the left, Pane Studio Workspace's folder pane shows the art assets of a UI project; on the right, Photoshop is being used to design the interface" loading="lazy"></div>
     </div>
 
     <div class="mini-grid">
@@ -427,7 +439,7 @@
       <h2>App Information</h2>
     </div>
     <table class="info-table">
-      <tr><td>Name</td><td>Pane Studio</td></tr>
+      <tr><td>Name</td><td>Pane Studio Workspace</td></tr>
       <tr><td>Current version</td><td>1.0.4</td></tr>
       <tr><td>Size</td><td>approx. 8.5 MB (installer)</td></tr>
       <tr><td>Category</td><td>System Tools → File Management / Multi-pane Workspace</td></tr>
@@ -444,7 +456,7 @@
   <div class="wrap">
     <div class="dl-band">
       <h2>Ready to try it?</h2>
-      <p>Free, no ads. Set your layout once — Pane Studio keeps it.</p>
+      <p>Free, no ads. Set your layout once — Pane Studio Workspace keeps it.</p>
       <a class="btn btn-lg" href="PaneStudioWorkspace_1.0.4_overseas_x64-setup.exe">⬇&nbsp; Download PaneStudioWorkspace_1.0.4_overseas_x64-setup.exe</a>
       <p class="dl-note">Windows 10 / 11 (64-bit) · approx. 8.5 MB · built-in auto-updater prompts you when a new version is released</p>
     </div>
@@ -467,7 +479,7 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Pane Studio. All rights reserved.</span>
+    <span>© 2026 Pane Studio Workspace. All rights reserved.</span>
     <span>For Windows 10 / 11 (64-bit) · Version 1.0.4 · <a href="privacy.html" style="color:var(--muted); text-decoration:underline;">Privacy Policy</a></span>
   </div>
 </footer>
