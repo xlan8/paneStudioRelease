@@ -7,7 +7,7 @@ Pack four kinds of panes — file manager, terminal, web browser, and document v
 ## Download
 
 - **Windows 10 / 11 (64-bit)**, free, no ads, installer approx. 8.5 MB:
-  [⬇️Download PaneStudioWorkspace](https://raw.githubusercontent.com/xlan8/paneStudioRelease/refs/heads/main/PaneStudioWorkspace_1.0.4_overseas_x64-setup.exe)
+  [⬇️Download PaneStudioWorkspace](https://raw.githubusercontent.com/xlan8/paneStudioRelease/refs/heads/main/PaneStudioWorkspace_1.0.4_overseas_x64-setup.zip)
 - The app has a built-in auto-updater: when a new version is released, you'll be prompted at startup and can upgrade with one click.
 - UI languages: Simplified Chinese, Traditional Chinese, English, Japanese, German, Spanish, French (selected automatically based on the system language).
 - Web panes are based on Microsoft Edge WebView2, which Windows 10/11 usually includes out of the box.
