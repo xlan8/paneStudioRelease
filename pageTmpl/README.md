@@ -28,21 +28,18 @@ Taskbar packed to the brim, three pages of Alt+Tab just to find the window you w
 
 ## Why You Need It
 
-<!-- TODO(asset pending): screenshots/img10.png — Before/After composite: left half = a real screenshot of five or six windows piled up on your desktop (stage a messy desktop and shoot it — do not draw a mockup), right half = img2 or the annotated img1. Layout and copy: marketing/文案与截图标注包.md section 5 -->
-![Before / After: five or six windows piled up on the desktop vs. one window with everything in its place](screenshots/img10.png)
+| Before: five or six windows piled up on your desktop | After: one click on a tab brings the whole layout back |
+| :-: | :-: |
+| ![Before: five or six windows piled up on the desktop](screenshots/img10_0.png) | ![After: one window with folders, terminal, documents, and web pages each in their place](screenshots/img1_0.png) |
+
+Editing a spreadsheet while reading a document, looking something up in a browser, and running a few commands — the result is four or five windows juggled back and forth: hunting for them, minimizing them, covering each other up.
 
 - The taskbar is packed, and you flip through **three pages of Alt+Tab** just to find the window you were using;
 - Windows 11 Snap is only a temporary arrangement — **no name, no saving, everything resets after a reboot**;
-- Want to edit a spreadsheet, read a document, and look something up at once? Shrink the windows and stack them;
 - First task of every workday: put back the windows you closed yesterday, **one by one**;
 - In a remote desktop session, local files have to go through a network drive or shared folder before they reach the remote PC.
 
-Windows File Explorer works well, but it can only do one thing at a time. When it comes to "tiling windows," Windows 11 does offer Snap Layouts and virtual desktops, but both manage a set of independent windows: snapping is only a temporary arrangement — the layout can't be saved or named, and **everything is lost after a reboot**, while the taskbar and Alt+Tab remain cluttered with a long list of window entries.
-
-- All panes live in a single window — one taskbar icon and one Alt+Tab entry in total;
-- Arrange a layout, give it a name, and save it as a workspace; next time, one click on its tab restores the whole group;
-- Switching workspaces works like browser tabs: rather than swapping an entire desktop, you swap one arrangement for another inside the same window — flipping between two layouts takes two clicks;
-- Files copied in one folder pane paste directly into another; the terminal, web pages, and documents sit side by side on the same screen. The next time you open a tab, the folders, URLs, and documents you had open come back with it.
+Pane Studio Workspace takes the direct approach: **instead of jumping between a pile of windows, put them together in one** — all panes live in a single window, so the taskbar keeps a single icon; arrange a layout, give it a name, and save it as a **workspace** — one click on its tab brings the whole group back, unchanged even after a reboot.
 
 ## Five Pane Types — Combine Freely, Open Any Number
 
@@ -61,9 +58,6 @@ Any pane can be **split horizontally** or **split vertically**, and can be **max
 ![Four pane types on one screen](screenshots/img2.png)
 
 *Folder, terminal, browser, and document — side by side, never covering each other.*
-
-<!-- TODO(asset pending): screenshots/demo-split.gif — 5–8 second silent GIF: drag a divider to split a pane horizontally / vertically. Design: marketing/文案与截图标注包.md section 10 -->
-![Split any pane horizontally or vertically at any time](screenshots/demo-split.gif)
 
 ## Feature Overview
 
@@ -85,16 +79,10 @@ Any pane can be **split horizontally** or **split vertically**, and can be **max
 
 ![Paste progress window, cancellable at any time](screenshots/img6.png)
 
-<!-- TODO(asset pending): screenshots/demo-drag.gif — 5–8 second silent GIF: drag a file directly from one pane into another. Design: marketing/文案与截图标注包.md section 10 -->
-![Drag a file directly from one pane into another](screenshots/demo-drag.gif)
-
 - **Save your layout as a workspace — tomorrow it's one click away** — create as many workspaces as you like, each with its own layout; rename, color-tag, drag to reorder, and delete, so layouts can be reused long-term.
 - **Readable Markdown out of the box** — headings, tables, code blocks, and images fully rendered.
 
 ![Markdown reading and workspace context menu](screenshots/img7.png)
-
-<!-- TODO(asset pending): screenshots/demo-restore.gif — 5–8 second silent GIF: click a workspace tab and watch folders, URLs, and documents come back as a group. Design: marketing/文案与截图标注包.md section 10 -->
-![One click on a tab restores the whole layout](screenshots/demo-restore.gif)
 
 - **A real-world task: a Microsoft Store submission in three panes** — the screenshot above is the actual layout used when submitting the app to the Microsoft Store: **top-left** is a folder pane holding the screenshots to upload; **bottom-left** is a web pane open on the Store submission page; the **right** side is a document pane showing the submission checklist as Markdown. Screenshots are dragged straight from the folder pane into the upload area of the web page, following the checklist as you fill in the form — **all without ever leaving this one window**, one window for the whole process.
 
