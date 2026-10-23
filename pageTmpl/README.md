@@ -1,11 +1,11 @@
-# Pane Studio Workspace — A Freely Splittable Desktop Workspace for Windows
+# Pane Studio Workspace — Split-Screen File Manager for Windows
 
 ![version](https://img.shields.io/badge/version-${version}-blue)
 ![size](https://img.shields.io/badge/size-8.5MB-blue)
 ![license](https://img.shields.io/badge/license-free-green)
 ![platform](https://img.shields.io/badge/platform-Windows%2010%2F11%20x64-0078D6)
 
-Taskbar packed to the brim, three pages of Alt+Tab just to find the window you were using — and that Snap layout you arranged? Gone after every reboot. Pane Studio Workspace takes the direct approach: **instead of jumping between a pile of windows, put them together in one.** Pack four kinds of panes — file manager, terminal, web browser, and document viewer — into a single, freely splittable window: any pane can be split horizontally or vertically, maximized, and restored. A layout you arrange can be named and saved as a **workspace**; clicking its tab brings the whole group back, and it survives a reboot unchanged.
+Taskbar packed to the brim, three pages of Alt+Tab just to find the window you were using — and that Snap layout you arranged? Gone after every reboot. Pane Studio Workspace takes the direct approach: **instead of jumping between a pile of windows, put them together in one.** Pack four kinds of panes — file manager, web browser, document viewer, and terminal — into a single window with as many panes as you need: any pane can be split horizontally or vertically, maximized, and restored. A layout you arrange can be named and saved as a **workspace**; clicking its tab brings the whole group back, and it survives a reboot unchanged.
 
 ![Pane Studio Workspace main window overview](screenshots/img1.png)
 
@@ -23,14 +23,14 @@ Taskbar packed to the brim, three pages of Alt+Tab just to find the window you w
 ## The 30-Second Tour
 
 1. **Download and install** — about 10 seconds, no account needed;
-2. **Drag in and get to work** — folders, terminal, web pages, documents: drag them into any pane and split however you like;
+2. **Drag in and get to work** — folders, web pages, documents, and the terminal: drag them into any pane and split however you like;
 3. **Save it as a workspace** — name your layout; tomorrow, one click on its tab brings the whole group back.
 
 ## Why You Need It
 
 | Before: five or six windows piled up on your desktop | After: one click on a tab brings the whole layout back |
 | :-: | :-: |
-| ![Before: five or six windows piled up on the desktop](screenshots/img10_0.png) | ![After: one window with folders, terminal, documents, and web pages each in their place](screenshots/img1_0.png) |
+| ![Before: five or six windows piled up on the desktop](screenshots/img10_0.png) | ![After: one window with folders, web pages, documents, and terminal each in their place](screenshots/img1_0.png) |
 
 Editing a spreadsheet while reading a document, looking something up in a browser, and running a few commands — the result is four or five windows juggled back and forth: hunting for them, minimizing them, covering each other up.
 
@@ -48,16 +48,16 @@ The main interface has two parts: a **workspace bar** on the left (each tab is a
 | Pane type | Description |
 | --- | --- |
 | **Folder** | Uses the real Windows Explorer control — native system icons, thumbnails, sorting, and the full right-click menu, with SVN, Git, and every other shell extension intact. Not an imitation list |
-| **PowerShell** | An embedded terminal that runs commands right in the pane; can be set to run a fixed command automatically at startup |
 | **Web** | An embedded browser (WebView2) with address bar, back/forward, and refresh; each pane can enable **sandbox mode** independently, keeping login state isolated from other panes so multiple accounts never mix |
-| **Document Viewer** | Drag in a file to view PDF, Markdown, or Word; Excel workbooks (.xlsx) can be viewed, edited, and saved back to the original file |
+| **Document Viewer** | A built-in PDF reader that also opens Markdown and Word — drag in a file, with search and zoom; Excel workbooks (.xlsx) can be viewed, edited, and saved back to the original file |
+| **PowerShell** | An embedded terminal that runs commands right in the pane; can be set to run a fixed command automatically at startup |
 | **Blank** | An empty pane with no type yet — click an icon to switch it to any of the above |
 
 Any pane can be **split horizontally** or **split vertically**, and can be **maximized** to fill the whole workspace and then restored; split ratios are remembered.
 
 ![Four pane types on one screen](screenshots/img2.png)
 
-*Folder, terminal, browser, and document — side by side, never covering each other.*
+*Folder, browser, document, and terminal — side by side, never covering each other.*
 
 ## Feature Overview
 
@@ -99,14 +99,14 @@ Any pane can be **split horizontally** or **split vertically**, and can be **max
 - **Built-in terminal** — the PowerShell pane runs commands directly in a specified directory; supports running a fixed command automatically at startup.
 - **AI automation support** — enable "Agent support" in Settings and the app reserves a local debug port, letting external AI tools (e.g. Playwright) take over web panes for automation; turn it off whenever you're done.
 - **File change watching** — folder contents refresh automatically when modified externally, no need to press F5.
-- **Dark & light themes** — switches automatically with your Windows system setting.
+- **Dark mode & light mode** — switches automatically with your Windows system setting.
 - **Always on top** — pin the window above everything with one click.
 - **7 UI languages** — Simplified Chinese, Traditional Chinese, English, Japanese, German, Spanish, French, selected automatically based on the system language.
 
 ## Who It's For
 
 - **If you always have a pile of folders, documents, spreadsheets, and terminals open** — a folder to look something up, a spreadsheet to edit, a terminal to run commands; the windows pile up until Alt+Tab takes pages. Lay them out in one window, each in its own pane and out of each other's way, and the taskbar keeps a single icon.
-- **If you reconcile two or three Excel files every day** — two workbooks in two windows, switching back and forth, never quite sure which file you saved. Put the sheets in two panes, view and edit side by side, and save each back to its original file.
+- **If you design games** — save one workspace per system: the equipment tables and design docs as one, the character system's as another. Lay out once, reuse forever, switch with one click.
 - **If you're a developer** — source directory on the left, terminal on the right, a browser pane for error lookups. Save the layout as a workspace; tomorrow it's one click away.
 - **If you design** — asset library on the left, Photoshop on the right, instant refresh on save — no more Alt+Tab ping-pong between Explorer and PS.
 - **If you work over remote desktop** — files in a remote clipboard paste directly into a pane — no more manual uploading and downloading.
@@ -116,13 +116,13 @@ Any pane can be **split horizontally** or **split vertically**, and can be **max
 
 - **How is it free?** — Completely free for now; the product comes first. No ads, no bundling, no account needed.
 - **Will my files be uploaded?** — No. Pane Studio Workspace runs locally and doesn't collect file contents (see the [Privacy Policy](privacy.html)).
-- **How is this different from Clover / QTTabBar / Files?** — The folder pane is the real Windows Explorer control with every shell extension intact — and it doesn't stop at files: terminal, web, and documents share the screen, and layouts are saved as workspaces.
-- **What are the trade-offs of Excel editing?** — It's positioned as "quick viewing + routine data edits", not a full Office replacement; the app warns you before the first save — always back up important files (see Things to Know).
+- **How is this different from Clover / QTTabBar / Q-Dir / Files?** — The folder pane is the real Windows Explorer control with every shell extension intact — and it doesn't stop at files: terminal, web, and documents share the screen, and layouts are saved as workspaces.
+- **What does Excel editing cover?** — change values, add records, edit most formulas, and adjust common formatting, all saved back to the original file; a few items (such as images, charts, macros) aren't supported yet, and the app tells you before the first save (see Things to Know).
 
 ## Things to Know
 
 - **Requires Microsoft Edge WebView2 Runtime** — Windows 10/11 usually includes it; if a web pane says it can't initialize, install the runtime from Microsoft's website.
-- **Excel editing involves trade-offs** — the built-in spreadsheet editor is deliberately lightweight, positioned as "quick viewing + routine data edits": changing values, adding records, and adjusting content are fully covered, and simple formulas calculate normally. It is not a full Office replacement: on save, advanced features in the original document such as images, charts, macros, and complex formulas may be lost. The app clearly warns you before the first save — always back up important files.
+- **What Excel editing covers** — the built-in spreadsheet editor covers everyday edits: change values, add records, edit most formulas, and adjust common formatting, saved back to the original file. A few documents may contain content that isn't supported yet (such as images, charts, macros), which can be lost on save — the app asks you to confirm before the first save, so please back up important files.
 - **Local debug port** — "Agent support" in Settings is off by default. When enabled, the app reserves a local debug port so AI tools on the same machine can drive web panes; it is not reachable from outside your PC and uploads nothing. If your firewall prompts you, allowing local access is fine.
 
 ## App Information
