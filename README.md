@@ -9,7 +9,7 @@ Taskbar packed to the brim, three pages of Alt+Tab just to find the window you w
 
 ![Pane Studio Workspace main window overview](screenshots/img1.png)
 
-*One window, four workspaces — folders, web pages, documents, and spreadsheets, each in its place, with multiple tabs in every pane. A single taskbar icon.*
+*One window, multiple workspaces — folders, web pages, documents, and spreadsheets, each in its place, with multiple tabs in every pane. A single taskbar icon.*
 
 ## Download
 
@@ -69,9 +69,9 @@ Every pane can also hold multiple **tabs**: keep several folders, terminals, web
 
 *With TortoiseSVN installed, update, commit, and browse logs right inside the pane.*
 
-- **Read the spec on top, edit the spreadsheet below — all in one window** — PDF, Markdown, and Word all support search and zoom as read-only previews; Excel workbooks (.xlsx) can be edited directly and saved back to the original file.
+- **Check the progress table on one side, review document completion on the other — all in one window** — PDF, Markdown, and Word all support search and zoom as read-only previews; Excel workbooks (.xlsx) can be edited directly and saved back to the original file.
 
-![Document viewing and direct Excel editing](screenshots/img4.png)
+![Progress table on one side, document completion review on the other](screenshots/img4.png)
 
 - **Per-tab sandbox — multiple accounts never mix** — open web pages without leaving the workspace; each web tab can enable **sandbox mode** independently, keeping login state isolated from other tabs and panes.
 
@@ -86,17 +86,17 @@ Every pane can also hold multiple **tabs**: keep several folders, terminals, web
 
 ![Markdown reading and workspace context menu](screenshots/img7.png)
 
-- **A real-world task: a Microsoft Store submission in three panes** — the screenshot above is the actual layout used when submitting the app to the Microsoft Store: **top-left** is a folder pane holding the screenshots to upload; **bottom-left** is a web pane open on the Store submission page; the **right** side is a document pane showing the submission checklist as Markdown. Screenshots are dragged straight from the folder pane into the upload area of the web page, following the checklist as you fill in the form — **all without ever leaving this one window**, one window for the whole process.
+- **A real-world task: a Microsoft Store submission in three panes** — a practical layout for submitting to the Microsoft Store: **top-left** is a folder pane holding the screenshots to upload; **bottom-left** is a folder pane with the package to submit; on the **right** is a web pane open on the Store submission page. Screenshots and the package are dragged straight from the folder pane into the upload area of the web page — **all without ever leaving this one window**, one window for the whole process.
 
-![Three-pane layout during a Microsoft Store submission: screenshots folder top-left, Store submission page bottom-left, submission checklist Markdown on the right](screenshots/img8.png)
+![Three-pane layout during a Microsoft Store submission: screenshots folder top-left, the package to submit bottom-left, Store submission page on the right](screenshots/img8.png)
 
-*Follow the checklist as you fill in the form — never leaving the window.*
+*Drag screenshots and the package straight into the upload area — never leaving the window.*
 
-- **Side by side with your other apps: assets on the left, design on the right** — Pane Studio Workspace isn't meant to replace the software you already use — it gives it a better place on screen. On the **left** is Pane Studio Workspace, with a folder pane holding the art assets for the job at hand — icons, slices, and reference images, filed by project. On the **right**, side by side, is Photoshop, with a UI mockup in progress. Assets are always within reach: drag a file straight out of the pane into Photoshop, or copy and paste between the two windows — no more Alt+Tab ping-pong between Explorer and PS. Save in Photoshop and the folder pane on the left **refreshes instantly**, so newly exported slices and updated images appear in the list right away. And **with a second monitor it gets even better: Pane Studio Workspace on one screen, Photoshop on the other**, so each app gets a full screen of its own.
+- **Alongside your other apps: asset library on top, design site below** — Pane Studio Workspace isn't meant to replace the software you already use — it gives it a better place on screen. Split one pane top and bottom: the **top** is a folder pane, filed by project, holding the icons and assets for the job at hand; the **bottom** is a web pane open on a design site. Spot an icon you like on the page? **Drag it straight into the folder above to save it** — saved files show up in the list right away, no manual refresh. When it's time to use them, drag a file straight into Photoshop or copy-paste it across — no more ping-pong between design sites, Explorer, and PS. **With a second monitor it gets even better: Pane Studio Workspace on one screen, Photoshop on the other** — each app gets a full screen of its own.
 
-![Pane Studio Workspace side by side with Photoshop: on the left, Pane Studio Workspace's folder pane shows the art assets of a UI project; on the right, Photoshop is being used to design the interface](screenshots/img9.png)
+![Pane Studio Workspace split top and bottom: a folder pane full of icon assets on top, a web pane open on a design site below](screenshots/img9.png)
 
-*Save in Photoshop — the folder pane on the left refreshes instantly.*
+*Spot an icon on a design site — drag it straight into the folder.*
 
 - **Multiple tabs per pane** — every pane holds several tabs; drag to reorder, drop into another pane, hold Ctrl to duplicate, or middle-click to close.
 - **Built-in terminal** — the PowerShell pane runs commands directly in a specified directory; supports running a fixed command automatically at startup.
@@ -111,7 +111,7 @@ Every pane can also hold multiple **tabs**: keep several folders, terminals, web
 - **If you always have a pile of folders, documents, spreadsheets, and terminals open** — a folder to look something up, a spreadsheet to edit, a terminal to run commands; the windows pile up until Alt+Tab takes pages. Lay them out in one window, each in its own pane and out of each other's way, and the taskbar keeps a single icon.
 - **If you design games** — save one workspace per system: the equipment tables and design docs as one, the character system's as another. Lay out once, reuse forever, switch with one click.
 - **If you're a developer** — source directory on the left, terminal on the right, a browser pane for error lookups. Save the layout as a workspace; tomorrow it's one workspace-tab click away.
-- **If you design** — asset library on the left, Photoshop on the right, instant refresh on save — no more Alt+Tab ping-pong between Explorer and PS.
+- **If you design** — asset library on top, design site below: drag icons you like straight into the folder, then into Photoshop when you need them.
 - **If you just want a quick look at a PDF / Word / Excel** — drag it into a pane; close the window when done and leave no pile of leftover windows.
 - **If you work over remote desktop** — files in a remote clipboard paste directly into a pane — no more manual uploading and downloading.
 
