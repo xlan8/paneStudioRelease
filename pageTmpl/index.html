@@ -378,7 +378,7 @@
     <div class="pane-list">
       <div class="pane-row"><b>📁 Folder</b><span>Uses the real Windows Explorer control — native icons, thumbnails, sorting, and the full right-click menu, with SVN, Git, and every other shell extension intact. Not an imitation list.</span></div>
       <div class="pane-row"><b>🌐 Web</b><span>An embedded browser (WebView2) with address bar, back/forward, and refresh; each web tab can enable sandbox mode independently, keeping login state isolated so multiple accounts never mix.</span></div>
-      <div class="pane-row"><b>📄 Document Viewer</b><span>A built-in PDF reader that also opens Markdown and Word — drag in a file, with search and zoom; Excel workbooks (.xlsx) can be viewed, edited, and saved back to the original file.</span></div>
+      <div class="pane-row"><b>📄 Document Viewer</b><span>A built-in PDF reader that also opens Markdown, Word, and images (JPG, PNG, GIF, WebP, BMP, SVG, AVIF) — drag in a file, with search and zoom; Excel workbooks (.xlsx) can be viewed, edited, and saved back to the original file.</span></div>
       <div class="pane-row"><b>⌨️ PowerShell</b><span>An embedded terminal that runs commands right in the pane; can be set to run a fixed command automatically at startup.</span></div>
       <div class="pane-row"><b>➕ Blank</b><span>An empty pane with no type yet — click an icon to switch it to any of the above.</span></div>
     </div>
@@ -407,7 +407,7 @@
     <div class="feat flip">
       <div>
         <h3>Read the spec on top, edit the spreadsheet below — all in one window</h3>
-        <p>PDF, Markdown, and Word all support search and zoom as read-only previews; Excel workbooks (.xlsx) <span class="hl">can be edited directly and saved back to the original file</span> — two sheets in two panes, viewed and edited side by side, no more switching between workbook windows.</p>
+        <p>PDF, Markdown, and Word all support search and zoom as read-only previews, and images open fitted to the pane — scroll to zoom around the cursor, drag to pan once enlarged, arrow keys to flip through the rest of the folder. Excel workbooks (.xlsx) <span class="hl">can be edited directly and saved back to the original file</span> — two sheets in two panes, viewed and edited side by side, no more switching between workbook windows.</p>
       </div>
       <div class="feat-img"><img src="screenshots/img4.png" alt="Editing an Excel workbook in a document pane" loading="lazy"><p class="feat-cap">Read the document on top, edit the spreadsheet below — one window.</p></div>
     </div>
@@ -454,6 +454,7 @@
 
     <div class="mini-grid">
       <div class="mini"><b>Multiple tabs per pane</b><span>Every pane holds several tabs; drag to reorder, drop into another pane, hold Ctrl to duplicate, or middle-click to close.</span></div>
+      <div class="mini"><b>Image preview</b><span>Drop a JPG, PNG, GIF, WebP, or SVG into a pane: it fits the window on open, the wheel zooms around the cursor, drag to pan, arrow keys flip through the rest of the folder. iPhone HEIC and TIFF aren't supported yet.</span></div>
       <div class="mini"><b>Built-in terminal</b><span>The PowerShell pane runs commands directly in a specified directory; supports running a fixed command automatically at startup.</span></div>
       <div class="mini"><b>AI automation support</b><span>Enable "Agent support" in Settings and the app reserves a local debug port, letting external AI tools (e.g. Playwright) take over web panes for automation — turn it off whenever you're done.</span></div>
       <div class="mini"><b>File change watching</b><span>Folder contents refresh automatically when modified externally — no need to press F5.</span></div>
@@ -472,28 +473,28 @@
     </div>
     <div class="grid grid-3">
       <div class="card">
-        <h3>Always a pile of folders, documents, spreadsheets, and terminals open</h3>
-        <p>A folder to look something up, a spreadsheet to edit, a terminal to run commands — the windows pile up until Alt+Tab takes pages. Lay them out in one window, each in its own pane and out of each other's way, and the taskbar keeps a single icon.</p>
+        <h3>One task, five windows</h3>
+        <p>A folder for lookups, a page in the browser, a document and a spreadsheet in windows of their own, a terminal on top of it all — Alt+Tab until your fingers hurt. Lay them out in one window instead, each in its own pane and out of each other's way, and the taskbar keeps a single icon.</p>
       </div>
       <div class="card">
-        <h3>Game designers: one workspace per system</h3>
-        <p>Save the equipment system's tables and design docs as one workspace, the character system's as another. Lay out once, reuse forever, switch with one click.</p>
+        <h3>The same few folders, all day long</h3>
+        <p>Source files on one drive, finished files on another, dozens of copy-pastes in between. Put two or three folder panes side by side and drag files straight across — with real-time progress you can cancel.</p>
       </div>
       <div class="card">
-        <h3>Developers / Ops</h3>
-        <p>Source directory on the left, terminal on the right, a browser pane for error lookups. Save the layout as a workspace; tomorrow it's one workspace-tab click away.</p>
+        <h3>Two things that belong side by side</h3>
+        <p>A revision next to the original, a render next to the reference. Documents, spreadsheets, and images each take a pane on the same screen, so you compare and edit without switching between files.</p>
       </div>
       <div class="card">
-        <h3>Designers</h3>
-        <p>Asset library on the left, Photoshop on the right, instant refresh on save — no more Alt+Tab ping-pong between Explorer and PS.</p>
+        <h3>Several accounts on one website</h3>
+        <p>Work, personal, and client logins in a single browser always end up mixing. Turn on sandbox mode per web tab and each login stays isolated — no second browser, no logging out and back in.</p>
       </div>
       <div class="card">
-        <h3>Just want a quick look at a document</h3>
-        <p>When a PDF, Word, or Excel file arrives and you want a quick look, drag it into a pane; close the window when done and leave no pile of leftover windows.</p>
+        <h3>The same start-up routine every day</h3>
+        <p>Those folders, those documents, that terminal. Save the arrangement as a workspace; next morning one click brings the whole group back, even after a reboot.</p>
       </div>
       <div class="card">
-        <h3>Remote desktop users</h3>
-        <p>Files in a remote clipboard paste directly into a pane — no more manual uploading and downloading.</p>
+        <h3>Just a quick look at a file</h3>
+        <p>A PDF, a Word file, or a photo arrives — from a chat window, or out of a remote desktop's clipboard. Drop it into a pane for a look, then close it and leave no leftover windows behind.</p>
       </div>
     </div>
   </div>
@@ -520,7 +521,7 @@
       </div>
       <div class="card">
         <h3>What does Excel editing cover?</h3>
-        <p>Change values, add records, edit most formulas, and adjust common formatting, all saved back to the original file. A few items (such as images, charts, macros) aren't supported yet; the app asks you to confirm before the first save (see Things to Know).</p>
+        <p>Change values, add records, edit most formulas, and adjust common formatting, all saved back to the original file. A few items (such as embedded images, charts, macros) aren't supported yet; the app asks you to confirm before the first save (see Things to Know).</p>
       </div>
     </div>
   </div>
@@ -538,7 +539,7 @@
       </div>
       <div class="card">
         <h3>What Excel editing covers</h3>
-        <p>The built-in spreadsheet editor covers everyday edits: change values, add records, edit most formulas, and adjust common formatting — all saved straight back to the original file. A few documents may contain content that isn't supported yet (such as images, charts, macros), which can be lost on save. The app asks you to confirm before the first save — please back up important files.</p>
+        <p>The built-in spreadsheet editor covers everyday edits: change values, add records, edit most formulas, and adjust common formatting — all saved straight back to the original file. A few documents may contain content that isn't supported yet (such as embedded images, charts, macros), which can be lost on save. The app asks you to confirm before the first save — please back up important files.</p>
       </div>
       <div class="card">
         <h3>Local debug port</h3>

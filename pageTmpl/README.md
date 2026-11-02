@@ -49,7 +49,7 @@ The main interface has two parts: a **workspace bar** on the left (each tab is a
 | --- | --- |
 | **Folder** | Uses the real Windows Explorer control — native system icons, thumbnails, sorting, and the full right-click menu, with SVN, Git, and every other shell extension intact. Not an imitation list |
 | **Web** | An embedded browser (WebView2) with address bar, back/forward, and refresh; each web tab can enable **sandbox mode** independently, keeping login state isolated from other tabs and panes so multiple accounts never mix |
-| **Document Viewer** | A built-in PDF reader that also opens Markdown and Word — drag in a file, with search and zoom; Excel workbooks (.xlsx) can be viewed, edited, and saved back to the original file |
+| **Document Viewer** | A built-in PDF reader that also opens Markdown, Word, and images — JPG, PNG, GIF, WebP, BMP, SVG, AVIF. Drag in a file, with search and zoom; Excel workbooks (.xlsx) can be viewed, edited, and saved back to the original file |
 | **PowerShell** | An embedded terminal that runs commands right in the pane; can be set to run a fixed command automatically at startup |
 | **Blank** | An empty pane with no type yet — click an icon to switch it to any of the above |
 
@@ -69,7 +69,7 @@ Every pane can also hold multiple **tabs**: keep several folders, terminals, web
 
 *With TortoiseSVN installed, update, commit, and browse logs right inside the pane.*
 
-- **Read the spec on top, edit the spreadsheet below — all in one window** — PDF, Markdown, and Word all support search and zoom as read-only previews; Excel workbooks (.xlsx) can be edited directly and saved back to the original file.
+- **Read the spec on top, edit the spreadsheet below — all in one window** — PDF, Markdown, and Word all support search and zoom as read-only previews; images open fitted to the pane, zoom around the cursor as you scroll, drag to pan once enlarged, and the arrow keys flip through the rest of the folder; Excel workbooks (.xlsx) can be edited directly and saved back to the original file.
 
 ![Document viewing and direct Excel editing](screenshots/img4.png)
 
@@ -99,6 +99,7 @@ Every pane can also hold multiple **tabs**: keep several folders, terminals, web
 *Save in Photoshop — the folder pane on the left refreshes instantly.*
 
 - **Multiple tabs per pane** — every pane holds several tabs; drag to reorder, drop into another pane, hold Ctrl to duplicate, or middle-click to close.
+- **Image preview** — drop a JPG, PNG, GIF, WebP, or SVG into a pane: it fits the window on open, the wheel zooms around the cursor, drag to pan, and the arrow keys flip through the rest of the folder. iPhone HEIC and TIFF aren't supported yet.
 - **Built-in terminal** — the PowerShell pane runs commands directly in a specified directory; supports running a fixed command automatically at startup.
 - **AI automation support** — enable "Agent support" in Settings and the app reserves a local debug port, letting external AI tools (e.g. Playwright) take over web panes for automation; turn it off whenever you're done.
 - **File change watching** — folder contents refresh automatically when modified externally, no need to press F5.
@@ -108,24 +109,24 @@ Every pane can also hold multiple **tabs**: keep several folders, terminals, web
 
 ## Who It's For
 
-- **If you always have a pile of folders, documents, spreadsheets, and terminals open** — a folder to look something up, a spreadsheet to edit, a terminal to run commands; the windows pile up until Alt+Tab takes pages. Lay them out in one window, each in its own pane and out of each other's way, and the taskbar keeps a single icon.
-- **If you design games** — save one workspace per system: the equipment tables and design docs as one, the character system's as another. Lay out once, reuse forever, switch with one click.
-- **If you're a developer** — source directory on the left, terminal on the right, a browser pane for error lookups. Save the layout as a workspace; tomorrow it's one workspace-tab click away.
-- **If you design** — asset library on the left, Photoshop on the right, instant refresh on save — no more Alt+Tab ping-pong between Explorer and PS.
-- **If you just want a quick look at a PDF / Word / Excel** — drag it into a pane; close the window when done and leave no pile of leftover windows.
-- **If you work over remote desktop** — files in a remote clipboard paste directly into a pane — no more manual uploading and downloading.
+- **If one task keeps five windows open** — a folder for lookups, a page in the browser, a document and a spreadsheet in windows of their own, a terminal on top of it all. Lay them out in one window, each in its own pane and out of each other's way, and the taskbar keeps a single icon.
+- **If you shuttle files between the same few folders all day** — sources on one drive, finished files on another, dozens of copy-pastes in between. Put two or three folder panes side by side and drag files straight across, with real-time progress you can cancel.
+- **If two things belong side by side** — a revision next to the original, a render next to the reference. Documents, spreadsheets, and images each take a pane on the same screen, so you compare and edit without switching between files.
+- **If you sign in to several accounts on the same website** — work, personal, and client logins in one browser always end up mixing. Turn on sandbox mode per web tab and each login stays isolated; no second browser, no logging out and back in.
+- **If every morning starts with the same routine** — those folders, those documents, that terminal. Save the arrangement as a workspace; next morning one click brings the whole group back, even after a reboot.
+- **If you just want a quick look at a file** — a PDF, a Word file, or a photo arrives, from a chat window or out of a remote desktop's clipboard. Drop it into a pane for a look, then close it and leave no leftover windows behind.
 
 ## FAQ
 
 - **How is it free?** — Completely free for now; the product comes first. No ads, no bundling, no account needed.
 - **Will my files be uploaded?** — No. Pane Studio Workspace runs locally and doesn't collect file contents (see the [Privacy Policy](privacy.html)).
 - **How is this different from Clover / QTTabBar / Q-Dir / Files?** — The folder pane is the real Windows Explorer control with every shell extension intact — and it doesn't stop at files: terminal, web, and documents share the screen, every pane can hold multiple tabs, and layouts are saved as workspaces.
-- **What does Excel editing cover?** — change values, add records, edit most formulas, and adjust common formatting, all saved back to the original file; a few items (such as images, charts, macros) aren't supported yet, and the app tells you before the first save (see Things to Know).
+- **What does Excel editing cover?** — change values, add records, edit most formulas, and adjust common formatting, all saved back to the original file; a few items (such as embedded images, charts, macros) aren't supported yet, and the app tells you before the first save (see Things to Know).
 
 ## Things to Know
 
 - **Requires Microsoft Edge WebView2 Runtime** — Windows 10/11 usually includes it; if a web pane says it can't initialize, install the runtime from Microsoft's website.
-- **What Excel editing covers** — the built-in spreadsheet editor covers everyday edits: change values, add records, edit most formulas, and adjust common formatting, saved back to the original file. A few documents may contain content that isn't supported yet (such as images, charts, macros), which can be lost on save — the app asks you to confirm before the first save, so please back up important files.
+- **What Excel editing covers** — the built-in spreadsheet editor covers everyday edits: change values, add records, edit most formulas, and adjust common formatting, saved back to the original file. A few documents may contain content that isn't supported yet (such as embedded images, charts, macros), which can be lost on save — the app asks you to confirm before the first save, so please back up important files.
 - **Local debug port** — "Agent support" in Settings is off by default. When enabled, the app reserves a local debug port so AI tools on the same machine can drive web panes; it is not reachable from outside your PC and uploads nothing. If your firewall prompts you, allowing local access is fine.
 
 ## App Information
