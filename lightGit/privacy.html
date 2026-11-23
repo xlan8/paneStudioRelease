@@ -7,6 +7,13 @@
 <meta name="description" content="Light Git privacy policy: what the app stores on your computer, when it connects to the network, who holds your Git credentials, and the scope of its anonymous usage analytics (Microsoft Clarity).">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/png" href="favicon.png">
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){
+  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "zhy1hksfot");
+</script>
 <style>
   :root {
     --bg: #0c1016;
@@ -195,14 +202,14 @@
     <p class="table-note">The first update check runs 3 seconds after startup, then once every 24 hours; on failure it retries after 1 hour. <b>The Store build does not check for updates</b> — updates are delivered by the Microsoft Store, and there is no update section in Settings. The rating button only opens the Store's rating page (<code>ms-windows-store://</code>) and sends nothing; "Feedback" writes a message into your own mail client, and whether you send it and what it contains is entirely up to you.</p>
 
     <h2><span class="n">6</span>Anonymous usage statistics</h2>
-    <p>Released builds collect anonymous usage statistics through <b>Microsoft Clarity</b> to learn which features get used and where new users get stuck. The direct-download build and the Microsoft Store build use separate projects. No other third-party analytics and no crash reporting are integrated.</p>
+    <p>Released builds and this website collect anonymous usage statistics through <b>Microsoft Clarity</b> to learn which features get used, where new users get stuck, and which parts of the website people read before deciding. The direct-download build, the Microsoft Store build and this website use separate projects. No other third-party analytics and no crash reporting are integrated.</p>
     <ul>
-      <li>Collected: interface interactions and operation traces (including session replay and click heatmaps), app version, interface language, Windows version, screen size, and an approximate country/region inferred from IP.</li>
+      <li>Collected: interface interactions and operation traces (including session replay and click heatmaps), app version, interface language, Windows version, screen size, and an approximate country/region inferred from IP. On the website, Clarity records page views, clicks, scrolling and the same approximate region; input fields are masked by default.</li>
       <li>Not collected: your name, email address, account or anything else that identifies you; the app never reads or uploads files on your disk or repository content.</li>
       <li>Not used for advertising, and never sold or shared with advertisers.</li>
     </ul>
     <p>Clarity keeps a local identifier used only to distinguish sessions. The app has no accounts and does no cross-device identification. The collection, masking and retention rules are handled by Microsoft; see the <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a>.</p>
-    <p>There is no separate analytics toggle in the app. If you would rather not participate, you can add an outbound block rule for the app in Windows Firewall — apart from update checks and the one-click Git download, all other features run locally.</p>
+    <p>There is no separate analytics toggle in the app. If you would rather not participate, you can add an outbound block rule for the app in Windows Firewall — apart from update checks and the one-click Git download, all other features run locally. On the website, you can opt out with a browser tracker blocker or by disabling JavaScript; the page content and all links remain available.</p>
 
     <h2><span class="n">7</span>What we explicitly do not do</h2>
     <ul>
