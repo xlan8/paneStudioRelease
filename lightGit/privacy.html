@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Light Git</title>
+<meta name="description" content="Light Git privacy policy: what the app stores on your computer, when it connects to the network, who holds your Git credentials, and the scope of its anonymous usage analytics (Microsoft Clarity).">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  :root {
+    --bg: #0c1016;
+    --bg2: #10161d;
+    --card: #141b23;
+    --line: #232c37;
+    --line2: #2e3946;
+    --text: #e9eef4;
+    --dim: #96a2b1;
+    --dim2: #6f7c8b;
+    --orange: #f4742b;
+    --orange-glow: rgba(244, 116, 43, 0.14);
+    --ok: #4fae6a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--orange); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- top bar ---------- */
+  header {
+    position: sticky; top: 0; z-index: 60;
+    background: rgba(12, 16, 22, 0.86);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; gap: 30px; height: 58px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; color: var(--text); }
+  .brand:hover { text-decoration: none; }
+  .logo { width: 26px; height: 26px; border-radius: 7px; display: block; }
+  .nav .back { margin-left: auto; color: var(--dim); font-size: 14px; }
+  .nav .back:hover { color: var(--text); text-decoration: none; }
+
+  /* ---------- title ---------- */
+  .hero {
+    padding: 64px 0 30px;
+    background: radial-gradient(ellipse 70% 60% at 50% -20%, var(--orange-glow), transparent), var(--bg);
+  }
+  .hero h1 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; font-weight: 800; }
+  .hero .meta { margin-top: 12px; color: var(--dim); font-size: 15px; }
+  .hero .meta b { color: var(--text); font-weight: 600; }
+
+  /* ---------- document ---------- */
+  .doc { padding: 8px 0 72px; }
+  .doc h2 {
+    font-size: 20px; margin: 46px 0 12px;
+    letter-spacing: -0.01em;
+    padding-top: 6px;
+  }
+  .doc h2 .n { color: var(--dim2); font-weight: 700; margin-right: 10px; font-variant-numeric: tabular-nums; }
+  .doc p, .doc li { color: var(--dim); }
+  .doc p + p { margin-top: 10px; }
+  .doc b, .doc strong { color: var(--text); }
+  .doc ul { padding-left: 22px; margin: 10px 0; }
+  .doc li { margin-bottom: 7px; }
+  .doc code {
+    font-family: Consolas, "Cascadia Mono", Menlo, monospace;
+    font-size: 0.9em;
+    background: #1b232d;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1px 5px;
+    color: #d6dfe9;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 22px 0;
+  }
+  .card p:last-child { margin-bottom: 0; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 6px; font-size: 14.5px; }
+  th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--text); font-weight: 600; background: #111821; white-space: nowrap; }
+  td { color: var(--dim); }
+  td b { color: var(--text); font-weight: 600; }
+  .table-note { font-size: 13.5px; color: var(--dim2); margin-top: 8px; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; }
+  .foot { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; font-size: 13px; color: var(--dim2); }
+  .foot a { color: var(--dim2); text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 0 20px; }
+    .hero { padding: 46px 0 24px; }
+    table { font-size: 13.5px; }
+    th, td { padding: 9px 10px; }
+    th { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img class="logo" src="favicon.png" alt="Light Git icon" width="26" height="26">Light Git</a>
+    <a class="back" href="index.html">&larr; Back to homepage</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>Privacy Policy</h1>
+    <p class="meta">Last updated: <b>November 20, 2026</b> · Applies to <b>all released versions of Light Git</b>, including the Microsoft Store build and the direct-download build from the website</p>
+  </div>
+</div>
+
+<div class="doc">
+  <div class="wrap">
+
+    <div class="card">
+      <p><b>In one sentence:</b> Light Git is a Git GUI that runs on your own computer. It has no account, no cloud sync and no ads, and it never uploads your code, commit history or repository addresses. The only statistics collected are anonymous usage analytics, whose scope is described in section 6.</p>
+    </div>
+
+    <h2><span class="n">1</span>What this app does</h2>
+    <p>Light Git is a Windows desktop program. It does not change your repository format; it simply calls the Git command-line tool already installed on your computer (<code>git.exe</code>) and a built-in Git library to do the work: viewing changes, committing, pushing, pulling, resolving conflicts, switching branches, creating tags and stashing. It also draws the results in a way that is easy to read.</p>
+    <p>So, apart from the <b>Push / Pull / Clone</b> actions you explicitly trigger — which connect to your own Git server — the app itself <b>holds none of your data</b>. We do not have your repositories, and we have no server storing your projects. The product has no such server at all.</p>
+
+    <h2><span class="n">2</span>What the app stores on your computer</h2>
+    <p>Everything the app produces is written to two directories on your machine and is never synced anywhere:</p>
+    <ul>
+      <li><b>Repository list and current repository</b>: which paths you have imported and which repository you last viewed, kept in the app's own WebView local storage.</li>
+      <li><b>Interface preferences</b>: filters, sorting and grouping on the Changes page, column widths on the History page, plus language and theme choices.</li>
+      <li><b><code>settings.json</code></b>: only two things — the detected path to <code>git.exe</code>, and whether that path was auto-detected or specified manually.</li>
+      <li><b><code>rating.json</code></b> (Store build only): whether the rating prompt has been shown, whether you have permanently dismissed it, and the counters and timestamps used for timing.</li>
+      <li><b><code>update-state.json</code></b> (direct-download build only): the result of the last update check, and the checksum and progress of the downloaded installer. The Store build does not check for updates and does not create this file.</li>
+      <li><b><code>LocalSettings</code></b> (Store build only): a single flag recording whether we have already asked you to create a shortcut. It contains no shortcut location, disk path, usage count or anything that could identify you.</li>
+      <li><b>Portable Git</b> (only if you click "Download Git"): when no Git installation is detected, the app unpacks a portable Git into its own data directory. It does not change the system PATH or write to the Windows Registry.</li>
+    </ul>
+    <p>None of these files contains <b>any repository content</b> — no code, no commit history and no diff text. The app does not copy your repositories and does not make backups or caches of them.</p>
+    <p class="table-note">Locations: <code>%APPDATA%\com.lightgit.app</code> (configuration and state) and <code>%LOCALAPPDATA%\com.lightgit.app</code> (WebView local storage). In the Store build these two directories live inside the app's own container and are removed with the app when it is uninstalled. In the direct-download build the uninstaller removes only the program itself; delete the two directories manually to clear everything.</p>
+
+    <h2><span class="n">3</span>Where does your code go?</h2>
+    <p>There is only one route: <b>the remote address you enter yourself</b>. During Push, Pull and Clone, data goes directly from your computer to GitHub, Gitee, GitLab or your company's own Git server — exactly as if you had typed <code>git push</code> on the command line. It does not pass through us. SSH mode uses the <code>ssh</code> client and keys already on your system; the app never reads, copies or uploads your private key.</p>
+    <p>Apart from the repository folders you import, the app does not scan other folders on your disk, and there is no "Auto-upload", "Cloud backup" or "Team sharing" entry anywhere in the interface.</p>
+
+    <h2><span class="n">4</span>How are usernames and passwords handled?</h2>
+    <p>When an HTTPS remote needs authentication, the app shows its own dialog asking for your username and password (or a personal access token). Once you confirm:</p>
+    <ul>
+      <li>The credentials are handed to the <b>system Git Credential Manager</b> (which ultimately stores them in Windows Credential Manager), so they can be filled in automatically next time.</li>
+      <li>The app itself <b>never writes a password file</b>; there is no account list in Settings and no "saved passwords" entry.</li>
+      <li>These credentials are never sent to us and never enter the usage statistics.</li>
+    </ul>
+    <p>To clear saved credentials, delete the corresponding Git entry under Windows Credential Manager → Windows Credentials, or change the remote address in Settings.</p>
+
+    <h2><span class="n">5</span>When does it connect to the network?</h2>
+    <p>Only in the following four situations — there are no others:</p>
+    <table>
+      <thead>
+        <tr><th>Scenario</th><th>Connects to</th><th>What is sent</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Push / Pull / Clone</b><br>and remote sync when creating branches or tags</td>
+          <td>Your own Git server (address entered by you)</td>
+          <td>The commit data required by the Git protocol itself, plus your credentials (handed to the system credential manager, see section 4)</td>
+        </tr>
+        <tr>
+          <td><b>Update check</b><br>direct-download build only</td>
+          <td>A JSON file on <code>pane-studio.vercel.app</code></td>
+          <td>A normal file-read request carrying only the version number and standard HTTP headers; the installer is verified with SHA-256 when downloaded</td>
+        </tr>
+        <tr>
+          <td><b>Download Git</b><br>only if you click "Download Git"</td>
+          <td><code>api.github.com</code>, <code>git-scm.com</code>, and fallback mirrors (Tsinghua TUNA, npmmirror, Nanjing University mirror)</td>
+          <td>Version lookups and installer downloads, with no information about your machine</td>
+        </tr>
+        <tr>
+          <td><b>Anonymous usage statistics</b></td>
+          <td>Microsoft Clarity (Microsoft)</td>
+          <td>See section 6</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="table-note">The first update check runs 3 seconds after startup, then once every 24 hours; on failure it retries after 1 hour. <b>The Store build does not check for updates</b> — updates are delivered by the Microsoft Store, and there is no update section in Settings. The rating button only opens the Store's rating page (<code>ms-windows-store://</code>) and sends nothing; "Feedback" writes a message into your own mail client, and whether you send it and what it contains is entirely up to you.</p>
+
+    <h2><span class="n">6</span>Anonymous usage statistics</h2>
+    <p>Released builds collect anonymous usage statistics through <b>Microsoft Clarity</b> to learn which features get used and where new users get stuck. The direct-download build and the Microsoft Store build use separate projects. No other third-party analytics and no crash reporting are integrated.</p>
+    <ul>
+      <li>Collected: interface interactions and operation traces (including session replay and click heatmaps), app version, interface language, Windows version, screen size, and an approximate country/region inferred from IP.</li>
+      <li>Not collected: your name, email address, account or anything else that identifies you; the app never reads or uploads files on your disk or repository content.</li>
+      <li>Not used for advertising, and never sold or shared with advertisers.</li>
+    </ul>
+    <p>Clarity keeps a local identifier used only to distinguish sessions. The app has no accounts and does no cross-device identification. The collection, masking and retention rules are handled by Microsoft; see the <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a>.</p>
+    <p>There is no separate analytics toggle in the app. If you would rather not participate, you can add an outbound block rule for the app in Windows Firewall — apart from update checks and the one-click Git download, all other features run locally.</p>
+
+    <h2><span class="n">7</span>What we explicitly do not do</h2>
+    <ul>
+      <li>No registration, no login, no account system and no "cloud workspace".</li>
+      <li>No reading of directories you have not imported, no uploading of repository content, and no code analysis or cloud builds.</li>
+      <li>No ads, no in-app purchases, and no prompts to install third-party programs.</li>
+      <li>No background rewriting of your repositories; if you do not click anything, it does nothing.</li>
+      <li>In the Microsoft Store build, creating a desktop shortcut or pinning to the taskbar happens only after you explicitly confirm. This feature collects no privacy data and never sends shortcut information to us. The pin-to-taskbar confirmation dialog is shown by Windows itself.</li>
+      <li>We never sell or hand data to any third party — apart from the four network scenarios listed above, there is no fifth.</li>
+    </ul>
+
+    <h2><span class="n">8</span>Data deletion</h2>
+    <p>Uninstalling the app: in the Store build, app data lives in its own container and is deleted together with the app. In the direct-download build, after uninstalling, delete the two directories from section 2 to clear everything (they contain only paths, preferences and state — no repository content). After deletion, reinstalling starts fresh, as on first launch.</p>
+    <p>On our side, the usage statistics are only anonymous session records and do not point to any individual. If you would like certain records removed, email us with the approximate time and version and we will do our best to locate and delete the matching sessions.</p>
+
+    <h2><span class="n">9</span>Minors</h2>
+    <p>This app is a developer tool, is not designed for children, and collects no personally identifying information. Minors may use it under a guardian's guidance; no additional information is required.</p>
+
+    <h2><span class="n">10</span>Policy updates</h2>
+    <p>When features or network behavior change (for example, a new analytics provider or a different update source), we will update this page and its "Last updated" date; significant changes will be called out in the app's release notes. Continuing to use a newer version means you accept the updated policy.</p>
+
+    <h2><span class="n">11</span>Contact</h2>
+    <p>For questions about this policy, requests to delete statistics, or behavior that does not match what is described here, email <a href="mailto:w13683434020@gmail.com">w13683434020@gmail.com</a>.</p>
+    <p>We usually reply within a few business days. You can also copy the address from the "Contact" section on the homepage.</p>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Light Git</span>
+    <span>For Windows 10 / 11 (64-bit)</span>
+    <a href="privacy.html">Privacy policy</a>
+  </div>
+</footer>
+
+</body>
+</html>

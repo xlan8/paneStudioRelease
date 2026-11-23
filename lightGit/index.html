@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Light Git — A Windows Git GUI That Keeps the Common Mistakes Out of Reach</title>
+<meta name="description" content="A Windows Git GUI for people who don't need to master Git: operations that usually go wrong are kept out of your way — conflicts resolved hunk by hunk, commit and push in one step, and plain-language guidance on what to click next when something goes wrong. 100% free, no ads, no malware.">
+<meta property="og:title" content="Light Git — The awkward moments in a project all happen in the few minutes when Git goes wrong">
+<meta property="og:description" content="Committing, pushing and switching branches — any Git GUI can do that. What actually stops people is an update rejected, a colleague's changes lost while resolving a conflict, a branch nobody can pull, or a commit that was never pushed. Light Git turns those moments into screens you can read, click and finish.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://raw.githubusercontent.com/xlan8/paneStudioRelease/refs/heads/main/lightGit/screenshots/img1.png">
+<!-- TODO icon: favicon.png is still Pane Studio's icon; replace with the Light Git icon -->
+<link rel="icon" type="image/png" href="favicon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Light Git",
+  "operatingSystem": "Windows 10, Windows 11 (64-bit)",
+  "applicationCategory": "DeveloperApplication",
+  "softwareVersion": "1.0.4",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "A Windows Git GUI that keeps the operations where beginners get into trouble out of the way: commit and push in one step, a read-only staging area during conflicts, conflicts resolved hunk by hunk, and plain-language guidance when something goes wrong."
+}
+</script>
+<style>
+  :root {
+    --bg: #0c1016;
+    --bg2: #10161d;
+    --card: #141b23;
+    --line: #232c37;
+    --line2: #2e3946;
+    --text: #e9eef4;
+    --dim: #96a2b1;
+    --dim2: #6f7c8b;
+    --orange: #f4742b;
+    --orange-d: #c9571a;
+    --orange-glow: rgba(244, 116, 43, 0.14);
+    --ok: #4fae6a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--orange); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code {
+    font-family: Consolas, "Cascadia Mono", Menlo, monospace;
+    font-size: 0.92em;
+    background: #1b232d;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1px 5px;
+    color: #d6dfe9;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- Top bar ---------- */
+  header {
+    position: sticky; top: 0; z-index: 60;
+    background: rgba(12, 16, 22, 0.86);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; gap: 30px; height: 58px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; color: var(--text); }
+  .brand:hover { text-decoration: none; }
+  .logo {
+    width: 26px; height: 26px; border-radius: 7px;
+    display: block;
+  }
+  .nav-links { display: flex; gap: 24px; margin-left: auto; }
+  .nav-links a { color: var(--dim); font-size: 14px; }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--orange); color: #1a0d05;
+    font-weight: 700; font-size: 14px;
+    padding: 9px 18px; border-radius: 8px;
+    transition: background .15s, transform .15s;
+  }
+  .btn:hover { background: #ff8340; text-decoration: none; transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: var(--text);
+    border: 1px solid var(--line2); font-weight: 600;
+  }
+  .btn-ghost:hover { background: #1a222c; border-color: #3d4a59; }
+  .btn-lg { font-size: 16px; padding: 13px 28px; border-radius: 10px; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 100px 0 40px; }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--dim); letter-spacing: .04em;
+    border: 1px solid var(--line); border-radius: 100px;
+    padding: 5px 14px; margin-bottom: 26px;
+  }
+  .kicker .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ok); }
+  .hero h1 {
+    font-size: clamp(32px, 4.7vw, 54px);
+    line-height: 1.16;
+    letter-spacing: -0.022em;
+    font-weight: 800;
+    max-width: 900px;
+  }
+  .hero h1 .u {
+    background: linear-gradient(transparent 64%, rgba(244,116,43,.32) 64%, rgba(244,116,43,.32) 94%, transparent 94%);
+    padding: 0 2px;
+  }
+  .hero .tagline {
+    margin-top: 20px;
+    max-width: 760px;
+    font-size: 18px;
+    line-height: 1.55;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .hero .sub {
+    margin-top: 16px;
+    max-width: 700px;
+    font-size: 17px;
+    color: var(--dim);
+  }
+  .hero .sub b { color: var(--text); font-weight: 600; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 10px 22px;
+    margin-top: 26px; font-size: 13px; color: var(--dim2);
+  }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 7px; }
+  .hero-meta i { width: 4px; height: 4px; border-radius: 50%; background: var(--dim2); display: inline-block; }
+
+  /* ---------- Common sections ---------- */
+  section { padding: 82px 0; }
+  .sec-head { margin-bottom: 44px; }
+  .sec-label {
+    font-size: 12px; font-weight: 700; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 14px;
+  }
+  h2 {
+    font-size: clamp(25px, 3.3vw, 36px);
+    line-height: 1.25; letter-spacing: -0.018em; font-weight: 800;
+    max-width: 820px;
+  }
+  .lede { margin-top: 16px; max-width: 700px; color: var(--dim); font-size: 16.5px; }
+
+  /* ---------- Screenshot frame ---------- */
+  .shot {
+    border: 1px solid var(--line2); border-radius: 12px;
+    overflow: hidden; background: #080b0f;
+    box-shadow: 0 22px 48px -28px #000;
+    position: relative;
+  }
+  .shot img { width: 100%; aspect-ratio: 1366 / 900; object-fit: cover; position: relative; z-index: 1; }
+  .shot .ph {
+    position: absolute; inset: 0; display: grid; place-items: center;
+    font: 13px Consolas, Menlo, monospace; color: #45525f;
+    letter-spacing: .08em; z-index: 0;
+  }
+
+  /* ---------- Four stuck moments ---------- */
+  .scene {
+    border-top: 1px solid var(--line);
+    padding: 52px 0 56px;
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 8px 32px;
+  }
+  .scene.first { border-top: 1px solid var(--line2); }
+  .idx {
+    font-size: 15px; font-weight: 700; color: var(--orange);
+    letter-spacing: .12em; padding-top: 6px;
+    font-variant-numeric: tabular-nums;
+  }
+  .quote {
+    font-size: clamp(19px, 2.1vw, 23px);
+    line-height: 1.45; font-weight: 600; color: #fff;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  .quote::before { content: "“"; color: var(--orange); }
+  .quote::after { content: "”"; color: var(--orange); }
+  .scene h3 { font-size: 17px; font-weight: 700; color: var(--dim); margin-bottom: 16px; }
+  .scene p.body { color: var(--dim); max-width: 720px; }
+  .answer {
+    margin-top: 26px;
+    border-left: 3px solid var(--orange);
+    padding: 4px 0 4px 20px;
+    max-width: 760px;
+  }
+  .answer b { display: block; font-size: 13px; letter-spacing: .08em; color: var(--orange); margin-bottom: 8px; }
+  .answer p { color: var(--text); }
+  .scene .shot { margin-top: 30px; max-width: 860px; }
+
+  /* ---------- No entry point ---------- */
+  .no-entry { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .p-list { display: grid; gap: 2px; max-width: 880px; }
+  .p-item {
+    display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 16px;
+    padding: 22px 0; border-top: 1px solid var(--line);
+  }
+  .p-item.first { border-top: none; }
+  .p-item .x {
+    width: 26px; height: 26px; border-radius: 6px; margin-top: 2px;
+    border: 1px solid rgba(244,116,43,.4); background: var(--orange-glow);
+    color: var(--orange); font-weight: 700; font-size: 14px;
+    display: grid; place-items: center;
+  }
+  .p-item b { font-size: 17px; display: block; margin-bottom: 5px; }
+  .p-item p { color: var(--dim); font-size: 15.5px; }
+
+  /* ---------- Everyday ---------- */
+  .daily-grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px 48px;
+  }
+  .d-item { padding: 20px 0; border-top: 1px solid var(--line); }
+  .d-item h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .d-item p { font-size: 14.5px; color: var(--dim); }
+
+  /* ---------- Limits / who it's for ---------- */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .b-list { list-style: none; }
+  .b-list li {
+    padding: 13px 0 13px 26px; position: relative;
+    border-bottom: 1px solid var(--line); color: var(--dim); font-size: 15.5px;
+  }
+  .b-list li:last-child { border-bottom: none; }
+  .b-list.yes li { color: var(--text); }
+  .b-list.yes li::before { content: "✓"; position: absolute; left: 0; color: var(--ok); font-weight: 700; }
+  .b-list.no li::before { content: "×"; position: absolute; left: 0; color: #8a6a58; font-weight: 700; }
+  .b-list.who { max-width: 760px; }
+  .note {
+    margin-top: 26px; font-size: 14.5px; color: var(--dim2);
+    border-left: 2px solid var(--line2); padding-left: 16px; max-width: 640px;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq { max-width: 860px; }
+  details { border-bottom: 1px solid var(--line); }
+  details summary {
+    list-style: none; cursor: pointer;
+    padding: 20px 34px 20px 0; position: relative;
+    font-weight: 600; font-size: 16px; color: var(--text);
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after {
+    content: "+"; position: absolute; right: 4px; top: 18px;
+    color: var(--orange); font-size: 20px; font-weight: 400; line-height: 1;
+  }
+  details[open] summary::after { content: "−"; }
+  details p { padding: 0 34px 22px 0; color: var(--dim); font-size: 15.5px; max-width: 720px; }
+
+  /* ---------- Download ---------- */
+  .download { background: var(--bg2); border-top: 1px solid var(--line); }
+  .dl-box {
+    border: 1px solid var(--line2); border-radius: 16px;
+    background: linear-gradient(180deg, #172029, #121820);
+    padding: 44px; display: grid; grid-template-columns: minmax(0,1fr) 300px;
+    gap: 40px; align-items: center;
+  }
+  .dl-box h2 { font-size: clamp(24px, 2.8vw, 30px); }
+  .dl-box p { color: var(--dim); margin-top: 12px; font-size: 15px; }
+  .dl-actions { text-align: center; }
+  .dl-actions .btn { width: 100%; justify-content: center; }
+  .dl-actions .btn + .btn { margin-top: 10px; }
+  .dl-actions small { display: block; margin-top: 12px; color: var(--dim2); font-size: 12.5px; }
+  .ver { color: var(--dim2); font-weight: 500; font-size: .6em; }
+  .trust-row {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2px 32px; margin-top: 34px;
+  }
+  .trust-item {
+    display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 12px;
+    padding: 18px 0; border-top: 1px solid var(--line);
+  }
+  .trust-mark {
+    width: 24px; height: 24px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: rgba(79,174,106,.12); color: var(--ok);
+    font-weight: 700; font-size: 13px; margin-top: 2px;
+  }
+  .trust-item b { display: block; font-size: 15.5px; margin-bottom: 4px; }
+  .trust-item p { color: var(--dim); font-size: 14.5px; }
+  .specs { width: 100%; border-collapse: collapse; margin-top: 44px; font-size: 14.5px; }
+  .specs th, .specs td { text-align: left; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .specs th { color: var(--dim2); font-weight: 500; width: 150px; }
+  .specs td { color: var(--dim); }
+
+  /* ---------- Contact / footer ---------- */
+  .contact { padding: 56px 0; border-top: 1px solid var(--line); }
+  .contact-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; justify-content: space-between; }
+  .contact p { color: var(--dim); font-size: 15px; }
+  .mail {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--card); border: 1px solid var(--line2); border-radius: 8px;
+    padding: 10px 14px; font-family: Consolas, Menlo, monospace; font-size: 14px; color: var(--text);
+  }
+  .copy-btn {
+    background: transparent; border: 1px solid var(--line2); color: var(--dim);
+    border-radius: 5px; padding: 3px 9px; font-size: 12px; cursor: pointer;
+    font-family: inherit;
+  }
+  .copy-btn:hover { color: var(--text); border-color: #4b5866; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; }
+  .foot { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; font-size: 13px; color: var(--dim2); }
+  .foot a { color: var(--dim2); text-decoration: underline; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav .btn { margin-left: auto; }
+    .hero { padding: 64px 0 48px; }
+    section { padding: 60px 0; }
+    .split, .daily-grid { grid-template-columns: 1fr; gap: 30px; }
+    .scene { grid-template-columns: 1fr; gap: 6px; padding: 40px 0 44px; }
+    .idx { padding-top: 0; }
+    .dl-box { grid-template-columns: 1fr; padding: 30px; gap: 26px; }
+    .dl-actions { text-align: left; }
+    .dl-actions .btn { width: auto; }
+    .trust-row { grid-template-columns: 1fr; gap: 0; margin-top: 20px; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 20px; }
+    .hero .tagline { font-size: 16.5px; margin-top: 16px; }
+    .hero-meta { font-size: 12px; gap: 8px 16px; }
+    .answer { padding-left: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><img class="logo" src="favicon.png" alt="Light Git icon" width="26" height="26">Light Git</a>
+    <nav class="nav-links">
+      <a href="#scenes">Four stuck moments</a>
+      <a href="#why">How it avoids mistakes</a>
+      <a href="#faq">FAQ</a>
+      <a href="#download">Download</a>
+    </nav>
+    <a class="btn" href="https://apps.microsoft.com/detail/9phbd1zbmf88?hl=en-US" target="_blank" rel="noopener">Get it free</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ Hero ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="kicker"><span class="dot"></span>Windows 10 / 11 · 64-bit · 100% Free · No ads</div>
+      <h1>The awkward moments in a project all happen in <span class="u">the few minutes when Git goes wrong</span></h1>
+      <p class="tagline">A Windows Git GUI for people who don't need to master Git — the operations that usually go wrong are kept out of your way.</p>
+      <p class="sub">
+        Committing, pushing and switching branches — any Git GUI can do that. What actually costs people half a day is something else —
+        <b>an update rejected</b>, <b>a colleague's changes lost while resolving a conflict</b>, <b>a branch you created that nobody can pull</b>, <b>a commit you thought you pushed but never did</b>.
+        Light Git turns those moments into screens you can read, click and finish — that's where the Git barrier comes down: planners, ops, designers and QA who were uneasy around Git can use it with confidence.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-lg" href="https://apps.microsoft.com/detail/9phbd1zbmf88?hl=en-US" target="_blank" rel="noopener">Get Light Git on Microsoft Store</a>
+        <a class="btn btn-lg btn-ghost" href="#scenes">See how it handles these four</a>
+      </div>
+      <div class="hero-meta">
+        <span>Free forever — no ads, no in-app purchases, no sign-up</span><i></i>
+        <span>Microsoft Store only — no bundled software, no malware</span><i></i>
+        <span>Your code stays between your PC and your own remotes</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Four stuck moments ============ -->
+  <section id="scenes">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-label">Four stuck moments</div>
+        <h2>What actually eats your time is these four things</h2>
+        <p class="lede">
+          What stops people isn't the error itself — it's seeing an error with no idea which way out is open.
+          Most tools stop halfway: they throw the raw error at you, in technical wording, without saying what to click next.
+          Light Git puts the problem on the table first, then narrows the way out to two or three buttons.
+        </p>
+      </div>
+
+      <article class="scene first">
+        <div class="idx">01</div>
+        <div>
+          <p class="quote">The update failed — it only said so, not what to do next.</p>
+          <h3>After a rejected update, nobody tells you where to click next</h3>
+          <p class="body">
+            You changed a few files locally, and a colleague changed the same ones on the remote. You hit Update and get a failure message and a few filenames —
+            no clue whose fault it is, what happened to those files, or whether to commit, stash or undo.
+            You search, and every answer is a command; typing it in might make things worse. So you either click Update again and again, or freeze.
+            The work stops there.
+          </p>
+          <div class="answer">
+            <b>How Light Git handles it</b>
+            <p>It checks first: which files were changed both locally and remotely, listed one by one with the reason stated plainly — this is why the update failed.
+            Then it gives three ways out: commit, stash or discard, each with its consequence spelled out; discarding asks for a second confirmation, so a slip of the hand won't cost you anything.
+            After that paragraph, the next button to click is obvious.</p>
+          </div>
+          <figure class="shot"><span class="ph">screenshots/img4.png</span><img src="screenshots/img4.png" alt="Light Git flags overlapping local and remote changes, lists three files that need attention with the reason for each, and offers commit, stash or discard" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="scene">
+        <div class="idx">02</div>
+        <div>
+          <p class="quote">You wiped your colleague's changes without a second thought.</p>
+          <p class="body">
+            After an update or merge, the Staged list fills up with files you never wrote — they came in with the update, from colleagues.
+            The more you look, the more wrong it feels: not one of these is yours. Did the last operation break something?
+            So you hit Restore, the list is clean again, and you feel fine. Then you commit and push — and everyone else's work is gone.
+          </p>
+          <div class="answer">
+            <b>How Light Git handles it</b>
+            <p>During a conflict the Staged list is read-only — there's nothing for Restore or Discard to act on.
+            Spreadsheet files (.xlsx / .xls / .csv) can't be picked hunk by hunk like text, so the conflict card shows cell-level differences with a switch between Mine / Theirs / Common ancestor,
+            letting you judge which side to keep before choosing Use mine or Use theirs.</p>
+          </div>
+          <figure class="shot"><span class="ph">screenshots/img2.png</span><img src="screenshots/img2.png" alt="Conflict resolution screen: each conflict block offers Current branch, Incoming branch or Keep both, with a resolved 2/4 count at the top" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="scene">
+        <div class="idx">03</div>
+        <div>
+          <p class="quote">I created that branch ages ago — my colleague says they can't pull it.</p>
+          <h3>The branch exists locally; the remote has nothing</h3>
+          <p class="body">
+            Creating a branch locally is instant; the remote only learns about it after a push. You never made that push,
+            and you've already been working on the new branch for two days. Your colleague can only see the main branch. By the time anyone notices,
+            the two copies have drifted apart — and "I created it ages ago" was true the whole time.
+          </p>
+          <div class="answer">
+            <b>How Light Git handles it</b>
+            <p>Creating a branch and pushing it are one action: the remote has it immediately, so your colleague can pull it right away.
+            If the remote refuses (name taken, no permission), the local branch you just made is rolled back too — no branch that only exists on your machine.
+            Local and remote branches sit in the same list, so you can see at a glance which is which.</p>
+          </div>
+          <figure class="shot"><span class="ph">screenshots/img5.png</span><img src="screenshots/img5.png" alt="Branch list: local and remote branches share one list, with a context menu to switch, merge or delete" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="scene">
+        <div class="idx">04</div>
+        <div>
+          <p class="quote">I committed it. They say it never arrived.</p>
+          <h3>The commit succeeded — but only on your machine</h3>
+          <p class="body">
+            The local commit succeeds, the icon turns green, and you assume you're done. Your colleague pulls and still gets the old code.
+            Half an hour of debugging later, you find your commit is still sitting on your own computer.
+            Nothing threw an error, so nobody thought to check.
+          </p>
+          <div class="answer">
+            <b>How Light Git handles it</b>
+            <p>Commit and push are one action — there's no second button to forget. A permanent "↑ 2 to push" badge in the sidebar keeps unpushed work visible.
+            If a push fails, you're told whether the remote has new commits, you lack permission, or the network is down, and what to do next.
+            There is no force push, so the fallback of overwriting someone else's commit doesn't exist either.</p>
+          </div>
+          <figure class="shot"><span class="ph">screenshots/img1.png</span><img src="screenshots/img1.png" alt="Light Git main window: the sidebar shows the current branch and pending pushes, with a file list, line-by-line diff and commit box on the right" loading="lazy"></figure>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ Why mistakes don't happen ============ -->
+  <section id="why" class="no-entry">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-label">Design choices</div>
+        <h2>How Light Git keeps those mistakes from happening</h2>
+        <p class="lede">
+          Other tools warn you. Light Git removes the entry point: it removes the states themselves, or merges them into one action.
+          So the cases below aren't "less likely" — they don't exist.
+        </p>
+      </div>
+
+      <div class="p-list">
+        <div class="p-item first">
+          <span class="x">×</span>
+          <div>
+            <b>No more "losing a colleague's changes while resolving a conflict"</b>
+            <p>The Staged list is read-only, and Restore and Discard have nowhere to land. There's no way to casually delete the files your colleague already committed.</p>
+          </div>
+        </div>
+        <div class="p-item">
+          <span class="x">×</span>
+          <div>
+            <b>No more "committed, but never pushed"</b>
+            <p>Commit and push are one action. With no second button, there's no step to forget.</p>
+          </div>
+        </div>
+        <div class="p-item">
+          <span class="x">×</span>
+          <div>
+            <b>No more "forgot to add it to the staging area"</b>
+            <p>There is no staging area in the interface. Tick a file and it's in this commit; untick it and it isn't. Changes can't be committed half-way because you forgot to add them.</p>
+          </div>
+        </div>
+        <div class="p-item">
+          <span class="x">×</span>
+          <div>
+            <b>No more "resolved the conflict, forgot to mark it"</b>
+            <p>Resolution depends only on whether conflict markers (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>) remain in the file, not on a button being clicked. So "everything is fixed but the commit still fails" can't happen.</p>
+          </div>
+        </div>
+        <div class="p-item">
+          <span class="x">×</span>
+          <div>
+            <b>No more "force-pushing when a push fails"</b>
+            <p>When the remote has new commits, it updates first and then pushes, instead of handing you a switch that overwrites someone else's work.</p>
+          </div>
+        </div>
+        <div class="p-item">
+          <span class="x">×</span>
+          <div>
+            <b>No more "shows modified, opens up empty"</b>
+            <p>With Unity or Cocos projects, saving assets rewrites the line endings of text files, so Git marks them modified even though the diff is empty.
+            Those stale-state files are detected and cleaned automatically and no longer appear in Changes. The judgment uses Git's own content rules, so real edits and staged content are untouched.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Everyday ============ -->
+  <section id="daily">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-label">The rest of the time</div>
+        <h2>On a normal day, work the way you're used to</h2>
+        <p class="lede">When nothing is stuck, it's just a normal Git client — a few fewer buttons, but all the everyday steps are there.</p>
+      </div>
+      <div class="daily-grid">
+        <div class="d-item">
+          <h3>Changes</h3>
+          <p>Grouped by added / modified / deleted; only ticked files go into this commit. Line-by-line diffs, before/after comparison for images, and cell-by-cell diffs for spreadsheets (.xlsx / .xls / .csv) that also detect whole-row and whole-column insert/delete; sort by status, path or file type, filter by added / changed / conflict. Commit messages can be generated from the change statistics.</p>
+        </div>
+        <div class="d-item">
+          <h3>History</h3>
+          <p>Commits have branch lanes, so you can see at a glance which branch a commit is on and where it was merged in. When history gets long, press Ctrl+F or click the magnifier in the title bar to search by commit message: matching rows and keywords highlight, Enter steps through the hits, and a counter under the box shows where you are in the loaded history. Open a commit for its file list and line-by-line diff (spreadsheets compare cell by cell too); expand the diff to fill the content area or step through files and hunks. Copy the hash, or create a branch or tag right at that commit.</p>
+        </div>
+        <div class="d-item">
+          <h3>Branches</h3>
+          <p>Local and remote branches in one list, with the same switch / merge / delete workflow; merge prefers the latest commit on the remote. Creating a branch also pushes it; if the push fails, the local ref is rolled back.</p>
+        </div>
+        <div class="d-item">
+          <h3>Tags</h3>
+          <p>Add a message to create an annotated tag and push it; click it to jump to that commit in History; deleting removes local and remote together, so no orphan tag is left on the server.</p>
+        </div>
+        <div class="d-item">
+          <h3>Stashes</h3>
+          <p>Restore (recover and delete the record) and Apply (recover but keep the record) are separate; untracked files can be included. If a restore is blocked by uncommitted work, stash that work first and try again.</p>
+        </div>
+        <div class="d-item">
+          <h3>Repositories &amp; environment</h3>
+          <p>Clone directly from a remote URL; checking out a specific commit requires a target branch, so you never land on a detached HEAD. In Repository Properties you can add, edit and delete multiple remotes and choose which one updates and pushes; the last remaining one can't be deleted. Git is detected at startup — install it in one click if it's missing, or point to an existing git.exe.</p>
+        </div>
+        <div class="d-item">
+          <h3>Submodules</h3>
+          <p>Lists each submodule's path, remote URL, current branch and uncommitted changes. Uninitialized ones can be initialized in one click; initialized ones open as standalone repositories via Manage. You can also create, change the URL or delete them; the deletion is committed on the Changes page.</p>
+        </div>
+        <div class="d-item">
+          <h3>Worktrees</h3>
+          <p>Check out the same repository into several folders at once. Leave the path empty to generate one automatically; an existing branch is checked out as-is, a missing one is created from the current commit and pushed to the remote. Each worktree opens and is managed separately; delete it when done.</p>
+        </div>
+        <div class="d-item">
+          <h3>Interface</h3>
+          <p>Light and dark themes follow Windows. UI in Simplified Chinese, Traditional Chinese, English, Japanese, German, Spanish and French, selected automatically from the system language.</p>
+        </div>
+        <div class="d-item">
+          <h3>Platform</h3>
+          <p>Not tied to any hosting platform: GitHub, Gitee, GitLab or your own server — it uses the Git on your machine.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Limits ============ -->
+  <section class="no-entry">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-label">Limits</div>
+        <h2>What it doesn't do</h2>
+        <p class="lede">
+          Half of the "doesn't happen" cases above come from removing features. So it's worth spelling out what's been removed —
+          in case you actually need them.
+        </p>
+      </div>
+      <div class="split">
+        <ul class="b-list no">
+          <li>No interactive history rewriting: <code>rebase -i</code>, squash, editing already-pushed commits</li>
+          <li>No force push</li>
+          <li>Not a hosting, pull-request or issue-tracking tool</li>
+          <li>No CI, no pipelines</li>
+          <li>No cross-repository bulk operations: several repos can be open at once, but commit and push happen one repo at a time</li>
+        </ul>
+        <div>
+          <p style="color:var(--dim); font-size:15.5px;">
+            These aren't omissions, they're trade-offs: every such feature adds another button that can break a project —
+            and in those few minutes, people are most likely to follow a button blindly.
+          </p>
+          <p class="note">
+            If you need full history rewriting or force push, Fork, Sourcetree or GitHub Desktop are better fits — more complete, and they expect you to already understand Git.
+            Submodules and worktrees keep only the everyday parts: submodules can be viewed, initialized, added, have their URL changed and be deleted;
+            worktrees can be viewed, created, opened and deleted.
+            On the same project, experienced teammates using those tools and newcomers using Light Git don't get in each other's way.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Who it's for ============ -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-label">Who it's for</div>
+        <h2>Who it's for</h2>
+        <p class="lede">It has nothing to do with project size. On any team, not everyone is fluent in Git — preventing one accident is cheaper than a post-mortem.</p>
+      </div>
+      <ul class="b-list yes who">
+        <li>Teams where not everyone writes code: planners, ops, designers and QA also deliver files to the same repository</li>
+        <li>People new to Git, or who got burned once and don't quite trust it</li>
+        <li>Anyone onboarding newcomers and wanting "what to do before committing" to be a few fixed buttons</li>
+        <li>Experienced users who don't want to memorize commands but expect every commit to be clean</li>
+        <li>Small projects missing the SVN feeling of "change it, commit it"</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq" class="no-entry">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-label">FAQ</div>
+        <h2>Before you download, a few things to confirm</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>Do I need Git installed first?</summary>
+          <p>Light Git checks for a usable Git on your system and guides you through a one-click install if it's missing.</p>
+        </details>
+        <details>
+          <summary>Will my code be uploaded to your servers?</summary>
+          <p>No. Code only travels between your own computer and the remotes you configure. The app has no server of its own and needs no account.
+          Released versions report anonymous usage statistics (interaction events, version, Windows version, approximate region); no file contents, commit messages or repository addresses are collected — see the <a href="privacy.html">privacy policy</a>.</p>
+        </details>
+        <details>
+          <summary>Can I only connect to GitHub?</summary>
+          <p>Any Git repository works: GitHub, Gitee, GitLab, a company server or a local bare repo. It uses the Git on your machine and is not tied to a platform.</p>
+        </details>
+        <details>
+          <summary>How is it different from GitHub Desktop, Sourcetree or Fork?</summary>
+          <p>They aim for completeness — interactive history rewriting, force push, and the full detail of submodules and worktrees — on the assumption that you already know what Git is doing.
+          Light Git narrows the scope, but keeps the everyday submodule and worktree actions: view, initialize / create, open and delete. Full interactive history rewriting and force push are still absent.
+          Neither is stronger; they're for different stages.</p>
+        </details>
+        <details>
+          <summary>Will it silently discard my changes?</summary>
+          <p>No. Discarding changes, deleting branches and aborting a merge all ask for confirmation; there's no force push; nothing rewrites your repository in the background.
+          The only operations that touch files are ones you click, and they ask for a second confirmation.</p>
+        </details>
+        <details>
+          <summary>Using Unity / Cocos — files always show as modified but the diff is empty?</summary>
+          <p>The engine rewrites line endings in text files when saving assets, so Git marks them modified even though the content didn't change.
+          Those fake changes are now detected and cleaned automatically and no longer appear in Changes. The judgment follows Git's own content rules, so real edits are untouched.</p>
+        </details>
+        <details>
+          <summary>Where do I download it? Is the download safe?</summary>
+          <p>Only from the <a href="https://apps.microsoft.com/detail/9phbd1zbmf88?hl=en-US" target="_blank" rel="noopener">Microsoft Store</a> — there is no direct installer on this site and no third-party mirror.
+          The Store handles installation and updates, so you get one clean, verified build: no bundled software, no adware, no malware. Windows won't show an unknown-publisher warning for a Store install.</p>
+        </details>
+        <details>
+          <summary>Is it really free? How do you make money?</summary>
+          <p>Yes — 100% free, no ads, no in-app purchases, no sign-up and no paid tiers. The Microsoft Store build is the only official build; for now the focus is simply on making the product good.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Download ============ -->
+  <section id="download" class="download">
+    <div class="wrap">
+      <div class="dl-box">
+        <div>
+          <h2>Get Light Git on Microsoft Store <span class="ver">v1.0.4</span></h2>
+          <p>Windows 10 / 11 (64-bit). Free, no ads, no in-app purchases. The Store installs and updates the app for you — one clean, verified build, every time.</p>
+          <p style="font-size:13.5px; color:var(--dim2); margin-top:14px;">
+            Microsoft Store is the only download source. No direct installer, no third-party mirror, no bundled software.
+          </p>
+        </div>
+        <div class="dl-actions">
+          <a class="btn btn-lg" href="https://apps.microsoft.com/detail/9phbd1zbmf88?hl=en-US" target="_blank" rel="noopener">Get it on Microsoft Store</a>
+          <small>100% free · No ads · No sign-up · No malware</small>
+        </div>
+      </div>
+
+      <div class="trust-row">
+        <div class="trust-item">
+          <span class="trust-mark">✓</span>
+          <div>
+            <b>Free, for real</b>
+            <p>No payment, no trials, no in-app purchases, no account required.</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-mark">✓</span>
+          <div>
+            <b>No ads, ever</b>
+            <p>No banners, pop-ups or ad tracking anywhere in the app.</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-mark">✓</span>
+          <div>
+            <b>Clean and safe</b>
+            <p>Store-only distribution: no adware, no bundled installers, no viruses.</p>
+          </div>
+        </div>
+      </div>
+
+      <table class="specs">
+        <tr><th>Application</th><td>Light Git</td></tr>
+        <tr><th>Version</th><td>1.0.4</td></tr>
+        <tr><th>Download</th><td>Microsoft Store only (no direct installer)</td></tr>
+        <tr><th>Category</th><td>Developer tools → Version control client</td></tr>
+        <tr><th>License</th><td>100% free, no ads, no in-app purchases, no sign-up required</td></tr>
+        <tr><th>Supported OS</th><td>Windows 10 / 11 (64-bit)</td></tr>
+        <tr><th>UI languages</th><td>Simplified Chinese, Traditional Chinese, English, Japanese, German, Spanish, French</td></tr>
+        <tr><th>Dependency</th><td>Git command-line tool (one-click install in the app; only needed for remote operations)</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ Contact ============ -->
+  <section class="contact">
+    <div class="wrap contact-row">
+      <p>Stuck at a specific step, or found a bug? Just send the details over.</p>
+      <span class="mail">
+        w13683434020@gmail.com
+        <button class="copy-btn" type="button" data-copy="w13683434020@gmail.com" aria-label="Copy email address">Copy</button>
+      </span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Light Git</span>
+    <span>For Windows 10 / 11 (64-bit)</span>
+    <a href="privacy.html">Privacy policy</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-copy');
+      var done = function () {
+        var old = btn.textContent;
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = old; }, 1500);
+      };
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(done);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        done();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
